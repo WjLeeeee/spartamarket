@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     fun productChange(view: View){
         when(view.id){
             R.id.img_mac-> {
