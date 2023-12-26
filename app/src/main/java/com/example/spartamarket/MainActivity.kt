@@ -1,8 +1,10 @@
 package com.example.spartamarket
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
@@ -13,6 +15,9 @@ class MainActivity : AppCompatActivity() {
 
     private val windowImage : ImageView by lazy{findViewById(R.id.img_window)}
     private val macImage : ImageView by lazy{findViewById(R.id.img_mac)}
+    private val loginBtn : Button by lazy{findViewById(R.id.login_btn)}
+    private val mypageBtn : Button by lazy{findViewById(R.id.mypage_btn)}
+
 
     private lateinit var scrollViewMac: ScrollView
     private lateinit var productMac: LinearLayout
@@ -27,6 +32,15 @@ class MainActivity : AppCompatActivity() {
         productMac = findViewById(R.id.productMac)
         scrollViewWindow = findViewById(R.id.scrollviewWindow)
         productWindow = findViewById(R.id.productWindow)
+
+        loginBtn.setOnClickListener {
+            val intent = Intent(this, MypageActivity::class.java)
+            startActivity(intent)
+        }
+        mypageBtn.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
