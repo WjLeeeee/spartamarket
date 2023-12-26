@@ -20,18 +20,14 @@ class MainActivity : AppCompatActivity() {
 
 
     private lateinit var scrollViewMac: ScrollView
-    private lateinit var productMac: LinearLayout
     private lateinit var scrollViewWindow: ScrollView
-    private lateinit var productWindow: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         scrollViewMac = findViewById(R.id.scrollviewMac)
-        productMac = findViewById(R.id.productMac)
         scrollViewWindow = findViewById(R.id.scrollviewWindow)
-        productWindow = findViewById(R.id.productWindow)
 
         loginBtn.setOnClickListener {
             val intent = Intent(this, MypageActivity::class.java)
