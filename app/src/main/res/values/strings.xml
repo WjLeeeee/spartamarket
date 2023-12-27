@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SpartaMarket</string>
+    <string name="login_idhint">아이디를 입력하세요.</string>
+    <string name="login_passhint">비밀번호를 입력하세요.</string>
+    <string name="login_signin">로그인</string>
+    <string name="login_signup">회원가입</string>
+    <string name="login_text">로그인화면</string>
+    <string name="login_market">스파르타 마켓</string>
 </resources>
