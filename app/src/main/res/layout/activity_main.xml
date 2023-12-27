@@ -7,312 +7,363 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
+    <android.widget.Button
         android:id="@+id/mypage_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_margin="20dp"
-        android:text="마이페이지"
+        android:text="@string/main_mypage"
         android:visibility="visible"
+        style="@style/MyButton"
         app:layout_constraintEnd_toStartOf="@+id/login_btn"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_margin="20dp"
         android:visibility="visible"
-        android:text="로그인"
+        android:text="@string/main_login"
+        style="@style/MyButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="카테고리"
-        android:layout_marginTop="80dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/img_window"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="50dp"
-        android:onClick="productChange"
-        android:src="@drawable/window"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/img_mac"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mypage_btn" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Window"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/img_window"
-        app:layout_constraintStart_toStartOf="@+id/img_window"
-        app:layout_constraintTop_toBottomOf="@+id/img_window" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mac"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/img_mac"
-        app:layout_constraintStart_toStartOf="@+id/img_mac"
-        app:layout_constraintTop_toBottomOf="@+id/img_mac" />
-
-    <ImageView
-        android:id="@+id/img_mac"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:onClick="productChange"
-        android:src="@drawable/mac"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/img_window"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/img_window"
-        app:layout_constraintTop_toTopOf="@+id/img_window" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="상품목록"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <ScrollView
-        android:id="@+id/scrollviewMac"
-        android:visibility="visible"
+    <LinearLayout
+        android:id="@+id/categoryLayout"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:layout_height="370dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/border_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mypage_btn">
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/main_category"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
         <LinearLayout
-            android:id="@+id/productMac"
+            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/img_mac"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/macbook_air13" />
+                    android:onClick="productChange"
+                    android:src="@drawable/category_mac_selector" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Apple 2020 맥북 에어 13" />
+                    android:text="@string/main_category_mac"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/img_window"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/macbook_air13_m2" />
-
+                    android:onClick="productChange"
+                    android:src="@drawable/category_window_selector"/>
                 <TextView
-                    android:layout_width="match_parent"
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Apple 2022 맥북 에어 13 M2" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/macbook_pro13_m2" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Apple 2022 맥북 프로13 M2" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/macbook_pro16" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Apple 2021 맥북프로 16" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/macbook_pro14" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Apple 2021 맥북프로 14" />
+                    android:text="@string/main_category_window"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
 
             </LinearLayout>
 
 
         </LinearLayout>
 
-    </ScrollView>
+    </LinearLayout>
 
-    <ScrollView
-        android:id="@+id/scrollviewWindow"
+    <LinearLayout
+        android:id="@+id/productListLayout"
         android:layout_width="match_parent"
-        android:layout_height="370dp"
-        android:visibility="invisible"
+        android:layout_height="450dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/border_background"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/categoryLayout">
 
-        <LinearLayout
-            android:id="@+id/productWindow"
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/main_product_list"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/categoryLayout" />
+
+        <ScrollView
+            android:id="@+id/scrollviewMac"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="vertical">
+            android:layout_height="370dp"
+            android:layout_margin="10dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
 
             <LinearLayout
+                android:id="@+id/productMac"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="0dp"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/asus_vivobook_go15" />
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="에이수스 Vivobook Go 15" />
+                    android:onClick="productMacClicked"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/macbook_air13" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/main_mac1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="productMacClicked"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/macbook_air13_m2" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/main_mac2" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="productMacClicked"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/macbook_pro13_m2" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/main_mac3" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="productMacClicked"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/macbook_pro16" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/main_mac4" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="productMacClicked"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/macbook_pro14" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/main_mac5" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+        </ScrollView>
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/lenovo_slim" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="레노버 아이디어패드 슬림 1 15IJL7 15.6" />
-
-            </LinearLayout>
+        <ScrollView
+            android:id="@+id/scrollviewWindow"
+            android:layout_width="match_parent"
+            android:layout_height="370dp"
+            android:layout_margin="10dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
 
             <LinearLayout
+                android:id="@+id/productWindow"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="0dp"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/notebook_13" />
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="13 노트북 Windows 10" />
+                    android:onClick="productWindowClicked"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/asus_vivobook_go15" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/main_window1" />
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/samsung_2021_plus2" />
+                </LinearLayout>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="삼성전자 2021 노트북 플러스2 15.6" />
+                    android:onClick="productWindowClicked"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/lenovo_slim" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/main_window2" />
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/topton_ultra_gaming" />
+                </LinearLayout>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="TOPTON 금속 울트라 게이밍 노트북" />
+                    android:onClick="productWindowClicked"
+                    android:orientation="horizontal">
 
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/notebook_13" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/main_window3" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="productWindowClicked"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/samsung_2021_plus2" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/main_window4" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="productWindowClicked"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/topton_ultra_gaming" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/main_window5" />
+
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
-    </ScrollView>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
