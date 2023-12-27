@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var productWindow: LinearLayout
     private lateinit var productMac: LinearLayout
 
-    object list{
+    object list {
         var buyList = mutableListOf<Product?>()
         var basketList = mutableListOf<Product?>()
 
@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
         resultLauncher.launch(intent)
-
+    }
 
     fun productMacClicked(view: View) {
         val index = productMac.indexOfChild(view)

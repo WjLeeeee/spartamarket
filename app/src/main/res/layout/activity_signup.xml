@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/img" />
 
     <ImageView
-        android:id="@+id/emailicon"
+        android:id="@+id/emailIcon"
         android:layout_width="55dp"
         android:layout_height="43dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,7 +32,7 @@
         app:srcCompat="@drawable/mailicon" />
 
     <ImageView
-        android:id="@+id/passwordicon"
+        android:id="@+id/passwordIcon"
         android:layout_width="55dp"
         android:layout_height="43dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,7 +45,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/nameIcon"
         android:layout_width="55dp"
         android:layout_height="43dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,7 +57,7 @@
         app:srcCompat="@drawable/usericon" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/phoneIcon"
         android:layout_width="55dp"
         android:layout_height="43dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,28 +72,10 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="270dp"
+        android:layout_marginStart="32dp"
         android:text="회원가입"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="<"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:layout_constraintEnd_toStartOf="@+id/textView8"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView11"
@@ -108,32 +90,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
         app:layout_constraintVertical_bias="0.476" />
 
     <EditText
-        android:id="@+id/editTextUsername"
+        android:id="@+id/editTextUserEmail"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="아이디(이메일)"
         android:inputType="text"
         android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/emailIcon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.684"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="243dp" />
+        app:layout_constraintStart_toEndOf="@+id/emailIcon"
+        app:layout_constraintTop_toTopOf="@+id/emailIcon" />
 
     <EditText
-        android:id="@+id/editTextUsername"
+        android:id="@+id/editTextUserPassword"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="비밀번호"
         android:inputType="text"
         android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/passwordIcon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.684"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="308dp" />
+        app:layout_constraintStart_toEndOf="@+id/passwordIcon"
+        app:layout_constraintTop_toTopOf="@+id/passwordIcon" />
 
     <EditText
         android:id="@+id/editTextUsername"
@@ -142,22 +126,24 @@
         android:hint="이름"
         android:inputType="text"
         android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/nameIcon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.684"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="370dp" />
+        app:layout_constraintStart_toEndOf="@+id/nameIcon"
+        app:layout_constraintTop_toTopOf="@+id/nameIcon" />
 
     <EditText
-        android:id="@+id/editTextUsername"
+        android:id="@+id/editTextUserPhoneNum"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="휴대폰 번호"
         android:inputType="text"
         android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/phoneIcon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.684"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="435dp" />
+        app:layout_constraintStart_toEndOf="@+id/phoneIcon"
+        app:layout_constraintTop_toTopOf="@+id/phoneIcon" />
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -192,10 +178,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="230dp"
         android:text="회원가입하기"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="647dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
