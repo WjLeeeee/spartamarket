@@ -103,45 +103,6 @@
                         android:layout_height="160dp"></include>
                 </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <include
-                        layout="@layout/layout_card"
-                        android:layout_width="160dp"
-                        android:layout_height="160dp"></include>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <include
-                        layout="@layout/layout_card"
-                        android:layout_width="160dp"
-                        android:layout_height="160dp"></include>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <include
-                        layout="@layout/layout_card"
-                        android:layout_width="160dp"
-                        android:layout_height="160dp"></include>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <include
-                        layout="@layout/layout_card"
-                        android:layout_width="160dp"
-                        android:layout_height="160dp"></include>
-                </androidx.cardview.widget.CardView>
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -195,47 +156,6 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <include
-                        layout="@layout/layout_card_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="160dp" />
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <include
-                        layout="@layout/layout_card_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="160dp" />
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <include
-                        layout="@layout/layout_card_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="160dp" />
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <include layout ="@layout/layout_card_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="160dp"/>
-
-                </androidx.cardview.widget.CardView>
             </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
