@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="detail_choose_product">고른 상품</string>
+    <string name="detail_choose_product_name">상품이름 : </string>
+    <string name="detail_choose_product_description">상품설명</string>
+    <string name="detail_basket">장바구니담기</string>
+    <string name="detail_purchase">바로구매하기</string>
+    <string name="detail_cancle">취소</string>
+</resources>

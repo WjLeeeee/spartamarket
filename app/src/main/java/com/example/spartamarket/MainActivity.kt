@@ -86,11 +86,14 @@ class MainActivity : AppCompatActivity() {
         val index = productWindow.indexOfChild(view)
         val selectedProduct = Product.productWindowList[index]
 
-        val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra("selectedProduct", selectedProduct)
+        val intent = Intent(this, DetailActivity::class.java).apply {
+            putExtra(
+                "selectedProduct",
+                selectedProduct
+            )
+        }
         resultLauncher.launch(intent)
-        //startActivity(intent)
-    }
+
 
     fun productMacClicked(view: View) {
         val index = productMac.indexOfChild(view)
@@ -99,14 +102,6 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra("selectedProduct", selectedProduct)
         resultLauncher.launch(intent)
-        //startActivity(intent)
     }
-    fun productMacClicked(view:View){
-        val index = productMac.indexOfChild(view)
-        val selectedProduct = Product.productMacList[index]
 
-        val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra("selectedProduct", selectedProduct)
-        startActivity(intent)
-    }
 }
