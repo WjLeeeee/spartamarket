@@ -3,9 +3,6 @@ package com.example.spartamarket
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-<<<<<<< HEAD
-import android.widget.Button
-=======
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -13,12 +10,9 @@ import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.Toast
 import androidx.core.view.isVisible
->>>>>>> 7bded4c40abe3a4fa5751682e9b9a2ecf4bb4a0c
 
 class MainActivity : AppCompatActivity() {
 
-    private val windowImage : ImageView by lazy{findViewById(R.id.img_window)}
-    private val macImage : ImageView by lazy{findViewById(R.id.img_mac)}
     private val loginBtn : Button by lazy{findViewById(R.id.login_btn)}
     private val mypageBtn : Button by lazy{findViewById(R.id.mypage_btn)}
 
@@ -28,21 +22,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-<<<<<<< HEAD
-        setContentView(R.layout.activity_login)
-
-=======
         setContentView(R.layout.activity_main)
 
         scrollViewMac = findViewById(R.id.scrollviewMac)
         scrollViewWindow = findViewById(R.id.scrollviewWindow)
 
         loginBtn.setOnClickListener {
-            val intent = Intent(this, MypageActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
         mypageBtn.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, MypageActivity::class.java)
             startActivity(intent)
         }
     }
@@ -59,7 +49,6 @@ class MainActivity : AppCompatActivity() {
                 scrollViewMac.isVisible=false
             }
         }
->>>>>>> 7bded4c40abe3a4fa5751682e9b9a2ecf4bb4a0c
     }
 
 }
