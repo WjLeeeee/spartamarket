@@ -1,5 +1,6 @@
 package com.example.spartamarket
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +8,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ScrollView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
+import kotlinx.parcelize.Parcelize
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,9 +23,30 @@ class MainActivity : AppCompatActivity() {
     private lateinit var productWindow: LinearLayout
     private lateinit var productMac: LinearLayout
 
+    object list{
+        var buyList = mutableListOf<Product?>()
+        var basketList = mutableListOf<Product?>()
+
+    }
+
+    //결과를 받는 Activitiy에서 선언
+    val resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                //받은 데이터 처리
+                val buyProduct = result.data?.getParcelableExtra<Product>("BuyProduct")
+                val basketProduct = result.data?.getParcelableExtra<Product>("BasketProduct")
+
+                if (buyProduct != null) list.buyList.add(buyProduct)
+                if (basketProduct != null) list.basketList.add(basketProduct)
+            }
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        resultLauncher
 
         scrollViewMac = findViewById(R.id.scrollviewMac)
         scrollViewWindow = findViewById(R.id.scrollviewWindow)
@@ -40,6 +64,8 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, MypageActivity::class.java)
             startActivity(intent)
         }
+
+
     }
 
     fun productChange(view: View) {
@@ -66,19 +92,16 @@ class MainActivity : AppCompatActivity() {
                 selectedProduct
             )
         }
-        startActivity(intent)
-    }
+        resultLauncher.launch(intent)
+
 
     fun productMacClicked(view: View) {
         val index = productMac.indexOfChild(view)
         val selectedProduct = Product.productMacList[index]
 
-        val intent = Intent(this, DetailActivity::class.java).apply {
-            putExtra(
-                "selectedProduct",
-                selectedProduct
-            )
-        }
-        startActivity(intent)
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra("selectedProduct", selectedProduct)
+        resultLauncher.launch(intent)
     }
+
 }
