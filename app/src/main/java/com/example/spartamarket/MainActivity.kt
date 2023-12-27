@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var scrollViewMac: ScrollView
     private lateinit var scrollViewWindow: ScrollView
+    private lateinit var productWindow: LinearLayout
+    private lateinit var productMac: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,11 @@ class MainActivity : AppCompatActivity() {
 
         scrollViewMac = findViewById(R.id.scrollviewMac)
         scrollViewWindow = findViewById(R.id.scrollviewWindow)
+        productWindow = findViewById(R.id.productWindow)
+        productMac = findViewById(R.id.productMac)
+
+
+
 
         loginBtn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
@@ -36,7 +43,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 
     fun productChange(view: View){
         when(view.id){
@@ -49,5 +55,14 @@ class MainActivity : AppCompatActivity() {
                 scrollViewMac.isVisible=false
             }
         }
+    }
+
+    fun productWindowClicked(view:View){
+        val index = productWindow.indexOfChild(view)
+        val selectedProduct = Product.productWindowList[index]
+
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra("selectedProduct", selectedProduct)
+        startActivity(intent)
     }
 }
