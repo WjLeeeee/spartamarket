@@ -10,9 +10,6 @@ class MypageActivity : AppCompatActivity() {
     private lateinit var btnLogout :Button
     private lateinit var btnBuy :Button
 
-    private var buyList = mutableListOf<Product?>()
-    private var basketList = mutableListOf<Product?>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mypage)
@@ -25,5 +22,9 @@ class MypageActivity : AppCompatActivity() {
         }
 
         //intent 수신
+
+
+        //객체에 따른 레이아웃에 CardView 값 추가
+
     }
 }
