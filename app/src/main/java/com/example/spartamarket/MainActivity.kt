@@ -6,12 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
+import kotlinx.parcelize.Parcelize
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,8 +23,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var productWindow: LinearLayout
     private lateinit var productMac: LinearLayout
 
-    private var buyList = mutableListOf<Product?>()
-    private var basketList = mutableListOf<Product?>()
+    object list{
+        var buyList = mutableListOf<Product?>()
+        var basketList = mutableListOf<Product?>()
+
+    }
 
     //결과를 받는 Activitiy에서 선언
     val resultLauncher =
@@ -35,8 +37,8 @@ class MainActivity : AppCompatActivity() {
                 val buyProduct = result.data?.getParcelableExtra<Product>("BuyProduct")
                 val basketProduct = result.data?.getParcelableExtra<Product>("BasketProduct")
 
-                if (buyProduct != null) buyList.add(buyProduct)
-                if (basketProduct != null) basketList.add(basketProduct)
+                if (buyProduct != null) list.buyList.add(buyProduct)
+                if (basketProduct != null) list.basketList.add(basketProduct)
             }
         }
 
@@ -60,17 +62,7 @@ class MainActivity : AppCompatActivity() {
         }
         mypageBtn.setOnClickListener {
             val intent = Intent(this, MypageActivity::class.java)
-            for(idx in buyList.indices){
-                intent.putExtra("buyProduct_${idx}",buyList[idx])
-            }
-
-            for(idx in basketList.indices){
-                intent.putExtra("basketProduct_${idx}",basketList[idx])
-            }
-
-            resultLauncher.launch(intent)
-
-            //startActivity(intent)
+            startActivity(intent)
         }
 
 
