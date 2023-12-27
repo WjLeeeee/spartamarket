@@ -18,7 +18,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val selectedProduct = intent.getSerializableExtra("selectedProduct") as? Product
+        val selectedProduct = intent.getParcelableExtra("selectedProduct") as? Product
 
         if(selectedProduct != null){
             chooseProductImg.setImageResource(selectedProduct.imageResId)
