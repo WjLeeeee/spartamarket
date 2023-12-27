@@ -67,8 +67,9 @@
 
     <TextView
         android:id="@+id/chooseProductDes"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:text="고른상품 설명 들어갈곳"
         android:textSize="20sp"
         android:layout_marginTop="10dp"
