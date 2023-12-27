@@ -1,12 +1,15 @@
 package com.example.spartamarket
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
+@Parcelize
 data class Product(
     val name: String,
     val imageResId: Int,
     val description: String
-): Serializable {
+): Parcelable {
     companion object {
         val productWindowList = listOf(
             Product(
