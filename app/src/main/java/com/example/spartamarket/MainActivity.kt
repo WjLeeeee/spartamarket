@@ -65,4 +65,12 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("selectedProduct", selectedProduct)
         startActivity(intent)
     }
+    fun productMacClicked(view:View){
+        val index = productMac.indexOfChild(view)
+        val selectedProduct = Product.productMacList[index]
+
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra("selectedProduct", selectedProduct)
+        startActivity(intent)
+    }
 }
