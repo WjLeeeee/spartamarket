@@ -1,5 +1,6 @@
 package com.example.spartamarket
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,12 +10,13 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 
 class MainActivity : AppCompatActivity() {
 
-    private val loginBtn : Button by lazy{findViewById(R.id.login_btn)}
-    private val mypageBtn : Button by lazy{findViewById(R.id.mypage_btn)}
+    private val loginBtn: Button by lazy { findViewById(R.id.login_btn) }
+    private val mypageBtn: Button by lazy { findViewById(R.id.mypage_btn) }
 
 
     private lateinit var scrollViewMac: ScrollView
@@ -22,9 +24,27 @@ class MainActivity : AppCompatActivity() {
     private lateinit var productWindow: LinearLayout
     private lateinit var productMac: LinearLayout
 
+    private var buyList = mutableListOf<Product?>()
+    private var basketList = mutableListOf<Product?>()
+
+    //결과를 받는 Activitiy에서 선언
+    val resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                //받은 데이터 처리
+                val buyProduct = result.data?.getParcelableExtra<Product>("BuyProduct")
+                val basketProduct = result.data?.getParcelableExtra<Product>("BasketProduct")
+
+                if (buyProduct != null) buyList.add(buyProduct)
+                if (basketProduct != null) basketList.add(basketProduct)
+            }
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        resultLauncher
 
         scrollViewMac = findViewById(R.id.scrollviewMac)
         scrollViewWindow = findViewById(R.id.scrollviewWindow)
@@ -40,37 +60,53 @@ class MainActivity : AppCompatActivity() {
         }
         mypageBtn.setOnClickListener {
             val intent = Intent(this, MypageActivity::class.java)
-            startActivity(intent)
+            for(idx in buyList.indices){
+                intent.putExtra("buyProduct_${idx}",buyList[idx])
+            }
+
+            for(idx in basketList.indices){
+                intent.putExtra("basketProduct_${idx}",basketList[idx])
+            }
+
+            resultLauncher.launch(intent)
+
+            //startActivity(intent)
         }
+
+
     }
 
-    fun productChange(view: View){
-        when(view.id){
-            R.id.img_mac-> {
-                scrollViewWindow.isVisible=false
-                scrollViewMac.isVisible=true
+    fun productChange(view: View) {
+        when (view.id) {
+            R.id.img_mac -> {
+                scrollViewWindow.isVisible = false
+                scrollViewMac.isVisible = true
             }
+
             R.id.img_window -> {
-                scrollViewWindow.isVisible=true
-                scrollViewMac.isVisible=false
+                scrollViewWindow.isVisible = true
+                scrollViewMac.isVisible = false
             }
         }
     }
 
-    fun productWindowClicked(view:View){
+    fun productWindowClicked(view: View) {
         val index = productWindow.indexOfChild(view)
         val selectedProduct = Product.productWindowList[index]
 
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra("selectedProduct", selectedProduct)
-        startActivity(intent)
+        resultLauncher.launch(intent)
+        //startActivity(intent)
     }
-    fun productMacClicked(view:View){
+
+    fun productMacClicked(view: View) {
         val index = productMac.indexOfChild(view)
         val selectedProduct = Product.productMacList[index]
 
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra("selectedProduct", selectedProduct)
-        startActivity(intent)
+        resultLauncher.launch(intent)
+        //startActivity(intent)
     }
 }
