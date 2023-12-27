@@ -1,5 +1,7 @@
 package com.example.spartamarket
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -25,6 +27,24 @@ class DetailActivity : AppCompatActivity() {
             chooseProductName.text = selectedProduct.name
             chooseProductDes.text = selectedProduct.description
         }
+
+
+        // 장바구니 버튼
+        basketBtn.setOnClickListener {
+            val returnIntent = Intent()
+            returnIntent.putExtra("BasketProduct",selectedProduct)
+            setResult(Activity.RESULT_OK,returnIntent)
+            finish()
+        }
+
+        // 구매 버튼
+        purchaseBtn.setOnClickListener {
+            val returnIntent = Intent()
+            returnIntent.putExtra("BuyProduct",selectedProduct)
+            setResult(Activity.RESULT_OK,returnIntent)
+            finish()
+        }
+
 
         cancleBtn.setOnClickListener {
             finish()
