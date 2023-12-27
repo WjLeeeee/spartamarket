@@ -74,33 +74,36 @@
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_basket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="@string/detail_basket"
+        style="@style/MyButton"
         app:layout_constraintBottom_toBottomOf="@+id/btn_purchase"
         app:layout_constraintEnd_toStartOf="@+id/btn_purchase"
         app:layout_constraintTop_toTopOf="@+id/btn_purchase" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_purchase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="100dp"
         android:text="@string/detail_purchase"
+        style="@style/MyButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_cancle" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_cancle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:text="@string/detail_cancle"
+        style="@style/MyButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
