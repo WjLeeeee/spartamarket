@@ -116,6 +116,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="productMacClicked"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -134,6 +135,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="productMacClicked"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -152,6 +154,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="productMacClicked"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -170,6 +173,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="productMacClicked"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -188,6 +192,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="productMacClicked"
                 android:orientation="horizontal">
 
                 <ImageView
