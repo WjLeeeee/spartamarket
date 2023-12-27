@@ -13,8 +13,6 @@ import androidx.core.view.isVisible
 
 class MainActivity : AppCompatActivity() {
 
-    private val windowImage : ImageView by lazy{findViewById(R.id.img_window)}
-    private val macImage : ImageView by lazy{findViewById(R.id.img_mac)}
     private val loginBtn : Button by lazy{findViewById(R.id.login_btn)}
     private val mypageBtn : Button by lazy{findViewById(R.id.mypage_btn)}
 
@@ -30,11 +28,11 @@ class MainActivity : AppCompatActivity() {
         scrollViewWindow = findViewById(R.id.scrollviewWindow)
 
         loginBtn.setOnClickListener {
-            val intent = Intent(this, MypageActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
         mypageBtn.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, MypageActivity::class.java)
             startActivity(intent)
         }
     }
