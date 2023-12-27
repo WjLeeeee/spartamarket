@@ -6,4 +6,196 @@
     android:layout_height="match_parent"
     tools:context=".SignupActivity">
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="174dp"
+        android:layout_height="147dp"
+        android:layout_marginBottom="500dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.75"
+        app:srcCompat="@drawable/img" />
+
+    <ImageView
+        android:id="@+id/emailicon"
+        android:layout_width="55dp"
+        android:layout_height="43dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.353"
+        app:srcCompat="@drawable/mailicon" />
+
+    <ImageView
+        android:id="@+id/passwordicon"
+        android:layout_width="55dp"
+        android:layout_height="43dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.447"
+        app:srcCompat="@drawable/passwordicon" />
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="55dp"
+        android:layout_height="43dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.537"
+        app:srcCompat="@drawable/usericon" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="55dp"
+        android:layout_height="43dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.632"
+        app:srcCompat="@drawable/phoneicon" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="270dp"
+        android:text="회원가입"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="<"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="300dp"
+        android:layout_marginBottom="500dp"
+        android:text="회원정보를 입력해주세요"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.476" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="아이디(이메일)"
+        android:inputType="text"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.684"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="243dp" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호"
+        android:inputType="text"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.684"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="308dp" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="이름"
+        android:inputType="text"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.684"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="370dp" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="휴대폰 번호"
+        android:inputType="text"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.684"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="435dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="180dp"
+        android:text="모두 확인하였으며 동의합니다."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUsername"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="350dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="150dp"
+        android:text="전체 동의에는 필수 및 선택 정보에 대한 동의가 포함되어 있으며, 개별적으로 동의를 선택 하실 수 있습니다."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="230dp"
+        android:text="회원가입하기"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="647dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

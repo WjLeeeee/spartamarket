@@ -8,27 +8,27 @@
     tools:context=".LoginActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:text="@string/login_signin"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_signup"
+        app:layout_constraintEnd_toStartOf="@+id/btn_signup"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@+id/linearLayout2"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
+        app:layout_constraintTop_toTopOf="@+id/btn_signup" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_signup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:text="@string/login_signup"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/btn_login"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <ImageView
@@ -58,7 +58,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/ed_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/gray"
@@ -87,7 +87,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/ed_pass"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/gray"
@@ -95,8 +95,8 @@
         android:hint="@string/login_passhint"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/ed_id"
+        app:layout_constraintStart_toStartOf="@+id/ed_id"
         app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
 
     <TextView
@@ -122,6 +122,58 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/green"
+        app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_signin"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@color/green"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_signup"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
