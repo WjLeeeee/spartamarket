@@ -55,8 +55,6 @@ class MainActivity : AppCompatActivity() {
         productWindow = findViewById(R.id.productWindow)
         productMac = findViewById(R.id.productMac)
 
-        val slideUp = AnimationUtils.loadAnimation(this, R.anim.slide_up)
-
 
         loginBtn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)

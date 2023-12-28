@@ -21,8 +21,6 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val slideDown = AnimationUtils.loadAnimation(this, R.anim.slide_down)
-
         val selectedProduct = intent.getParcelableExtra("selectedProduct") as? Product
 
         if(selectedProduct != null){
