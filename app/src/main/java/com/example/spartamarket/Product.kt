@@ -64,5 +64,12 @@ data class Product(
                 "CPU 모델명-M1 Pro8코어, GPU 모델명-GPU 14코어, 저장용량-512GB, RAM용량-16GB"
             )
         )
+        fun getProductList(category: String):List<Product>{
+            return when(category){
+                "mac" -> productMacList
+                "window" -> productWindowList
+                else -> emptyList()
+            }
+        }
     }
 }

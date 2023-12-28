@@ -21,15 +21,13 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val selectedProduct = intent.getParcelableExtra("selectedProduct") as? Product
-
-        if(selectedProduct != null){
-            chooseProductImg.setImageResource(selectedProduct.imageResId)
-            chooseProductName.text = selectedProduct.name
-            chooseProductDes.text = selectedProduct.description
-        }
-
-
+        val productImgResId = intent.getIntExtra("productImageResId", 0)
+        val productName = intent.getStringExtra("productName")
+        val productDescription = intent.getStringExtra("productDescription")
+        chooseProductImg.setImageResource(productImgResId)
+        chooseProductName.text = productName
+        chooseProductDes.text = productDescription
+        val selectedProduct = Product(productName ?: "", productImgResId, productDescription ?: "")
         // 장바구니 버튼
         basketBtn.setOnClickListener {
             val returnIntent = Intent()
