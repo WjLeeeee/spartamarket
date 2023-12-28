@@ -98,7 +98,9 @@
                     android:id="@+id/cv_cart"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:contentPadding="2dp">
 
                     <include layout="@layout/layout_card" />
                 </androidx.cardview.widget.CardView>
@@ -150,7 +152,8 @@
                     android:id="@+id/cv_order"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    app:contentPadding="2dp">
 
                     <include layout="@layout/layout_card_horizontal" />
 
