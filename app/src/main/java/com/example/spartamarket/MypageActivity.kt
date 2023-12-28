@@ -1,6 +1,5 @@
 package com.example.spartamarket
 
-import android.content.Intent
 import android.graphics.Color
 
 import androidx.appcompat.app.AppCompatActivity
@@ -9,12 +8,13 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.ViewCompat
+import com.example.spartamarket.MainActivity.list.basketList
+import com.example.spartamarket.MainActivity.list.buyList
 
 class MypageActivity : AppCompatActivity() {
+
 
     private lateinit var btnLogout: Button
     private lateinit var btnBuy: Button
@@ -27,7 +27,23 @@ class MypageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_mypage)
         //button id 연결
         btnLogout = findViewById(R.id.btn_logout)
+        btnBuy = findViewById(R.id.btn_buy)
 
+        //button 기능
+        btnBuy.setOnClickListener {
+            //지워질 list를 저장
+            var deleteList = mutableListOf<Product?>()
+            cardViewIdMap.filter { it.value }?.forEach { (idx, _) ->
+                deleteList.add(basketList[idx])
+            }
+            while(deleteList.isNotEmpty()){
+                buyList.add(deleteList.first())
+                basketList.remove(deleteList.first())
+
+                deleteList.removeFirst()
+            }
+            //UI 업데이트 함수
+        }
         btnLogout.setOnClickListener {
             finish()
         }
@@ -38,7 +54,7 @@ class MypageActivity : AppCompatActivity() {
         //장바구니,주문상품 리스트를 출력하는 부분
         viewCartList()
         viewOrderList()
-        setOnCardView()
+        onClickedCardView()
 
     }
 
@@ -52,7 +68,7 @@ class MypageActivity : AppCompatActivity() {
         var cardViewParameter = layoutCard.layoutParams
         var imageViewParameter = layoutCard.getViewById(R.id.iv_card).layoutParams
         var textViewParameter = layoutCard.getViewById(R.id.tv_card).layoutParams
-        MainActivity.list.basketList.forEach {
+        basketList.forEach {
             var cardView = CardView(this)
             var constraintLayout = ConstraintLayout(this)
             val imageView = ImageView(this)
@@ -71,7 +87,8 @@ class MypageActivity : AppCompatActivity() {
             textView.setBackgroundColor(Color.parseColor("#FFFFFF"))
 
             //View ID 지정
-            cardView.id = ViewCompat.generateViewId()
+//            cardView.id = ViewCompat.generateViewId()
+            cardView.id = basketList.indexOf(it)
             cardViewIdMap.put(cardView.id, false)
             //View에 추가
             cardView.addView(constraintLayout)
@@ -93,7 +110,7 @@ class MypageActivity : AppCompatActivity() {
         var imageViewParameter = layoutCard.getViewById(R.id.iv_card).layoutParams
         var textViewParameter = layoutCard.getViewById(R.id.tv_card).layoutParams
 
-        MainActivity.list.buyList.forEach {
+        buyList.forEach {
             var cardView = CardView(this)
             var constraintLayout = ConstraintLayout(this)
             val imageView = ImageView(this)
@@ -117,7 +134,7 @@ class MypageActivity : AppCompatActivity() {
         }
     }
 
-    private fun setOnCardView() {
+    private fun onClickedCardView() {
         cardViewIdMap.forEach { (id, _) ->
             val cardView = findViewById<CardView>(id)
             cardView.setOnClickListener {
