@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/layout_card_horizontal">
+    android:id="@+id/layout_card_horizontal"
+    android:layout_width="320dp"
+    android:layout_height="160dp">
 
     <ImageView
         android:id="@+id/iv_card"
@@ -13,13 +13,14 @@
         android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:0.8"
+        app:layout_constraintEnd_toStartOf="@+id/tv_card"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/asus_vivobook_go15" />
 
     <TextView
         android:id="@+id/tv_card"
-        android:layout_width="wrap_content"
+        android:layout_width="96dp"
         android:layout_height="wrap_content"
         android:text="노트북 이름"
         android:textSize="20dp"
