@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SpartaMarket</string>
+    <string name="main_mypage">mypage</string>
+    <string name="main_login">login</string>
+    <string name="main_category">categoty</string>
+    <string name="main_category_window">Window</string>
+    <string name="main_category_mac">Mac</string>
+    <string name="main_product_list">product List</string>
+    <string name="detail_choose_product_description">Product Description</string>
+    <string name="detail_purchase">Purchase Now</string>
+    <string name="detail_basket">Add Basket</string>
+    <string name="detail_back">Back</string>
+    <string name="login_passhint">Please enter your PIN number.</string>
+    <string name="login_signin">Login</string>
+    <string name="login_idhint">Please enter your ID.</string>
+    <string name="login_signup">SignUp</string>
+    <string name="login_text">Login screen</string>
+    <string name="login_market">Sparta Market</string>
+    <string name="toast_err">Please check ID/password.</string>
+    <string name="toast_login">Login Successful</string>
+</resources>
