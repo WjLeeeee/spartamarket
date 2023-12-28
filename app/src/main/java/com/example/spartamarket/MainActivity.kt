@@ -10,7 +10,6 @@ import android.widget.LinearLayout
 import android.widget.ScrollView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
-import kotlinx.parcelize.Parcelize
 
 class MainActivity : AppCompatActivity() {
 
