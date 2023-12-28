@@ -72,8 +72,10 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:text="회원가입"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.091"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -111,7 +113,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="비밀번호"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/passwordIcon"
         app:layout_constraintEnd_toEndOf="parent"
@@ -146,7 +148,7 @@
         app:layout_constraintTop_toTopOf="@+id/phoneIcon" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkBoxAgree"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="90dp"
@@ -169,11 +171,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.163"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxAgree"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/signUpBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="230dp"
@@ -183,6 +185,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="26dp"
+        android:layout_height="23dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView8"
+        app:srcCompat="@drawable/backbutton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
