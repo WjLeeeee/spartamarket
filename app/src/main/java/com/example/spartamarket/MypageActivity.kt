@@ -43,6 +43,7 @@ class MypageActivity : AppCompatActivity() {
                 deleteList.removeFirst()
             }
             //UI 업데이트 함수
+            updateUI()
         }
         btnLogout.setOnClickListener {
             finish()
@@ -57,7 +58,11 @@ class MypageActivity : AppCompatActivity() {
         onClickedCardView()
 
     }
-
+    fun updateUI(){
+        setContentView(R.layout.activity_mypage)
+        viewCartList()
+        viewOrderList()
+    }
 
     private fun viewCartList() {
         //객체에 따른 레이아웃에 CardView 값 추가
@@ -65,9 +70,9 @@ class MypageActivity : AppCompatActivity() {
 
         //layout_card의 xml 속성값을 copy 하고싶다.
         var layoutCard = findViewById<ConstraintLayout>(R.id.layout_card)
-        var cardViewParameter = layoutCard.layoutParams
-        var imageViewParameter = layoutCard.getViewById(R.id.iv_card).layoutParams
-        var textViewParameter = layoutCard.getViewById(R.id.tv_card).layoutParams
+        var cardViewParams = layoutCard.layoutParams
+        var imageViewParams = layoutCard.getViewById(R.id.iv_card).layoutParams
+        var textViewParams = layoutCard.getViewById(R.id.tv_card).layoutParams
         basketList.forEach {
             var cardView = CardView(this)
             var constraintLayout = ConstraintLayout(this)
@@ -77,9 +82,9 @@ class MypageActivity : AppCompatActivity() {
 
             //속성 정리
             constraintLayout.layoutParams = layoutCard.layoutParams
-            cardView.layoutParams = cardViewParameter
-            imageView.layoutParams = imageViewParameter
-            textView.layoutParams = textViewParameter
+            cardView.layoutParams = cardViewParams
+            imageView.layoutParams = imageViewParams
+            textView.layoutParams = textViewParams
 
             //Product 의 값 넣기
             imageView.setImageResource(it?.imageResId ?: 0)
@@ -106,9 +111,9 @@ class MypageActivity : AppCompatActivity() {
 
         //layout_card의 xml 속성값을 copy 하고싶다.
         var layoutCard = findViewById<ConstraintLayout>(R.id.layout_card_horizontal)
-        var cardViewParameter = layoutCard.layoutParams
-        var imageViewParameter = layoutCard.getViewById(R.id.iv_card).layoutParams
-        var textViewParameter = layoutCard.getViewById(R.id.tv_card).layoutParams
+        var cardViewParams = layoutCard.layoutParams
+        var imageViewParams = layoutCard.getViewById(R.id.iv_card).layoutParams
+        var textViewParams = layoutCard.getViewById(R.id.tv_card).layoutParams
 
         buyList.forEach {
             var cardView = CardView(this)
@@ -118,9 +123,9 @@ class MypageActivity : AppCompatActivity() {
 
             //속성 정리
             constraintLayout.layoutParams = layoutCard.layoutParams
-            cardView.layoutParams = cardViewParameter
-            imageView.layoutParams = imageViewParameter
-            textView.layoutParams = textViewParameter
+            cardView.layoutParams = cardViewParams
+            imageView.layoutParams = imageViewParams
+            textView.layoutParams = textViewParams
 
             imageView.setImageResource(it?.imageResId ?: 0)
             textView.setText(it?.name)
