@@ -1,10 +1,13 @@
 package com.example.spartamarket
 
 import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ScrollView
@@ -52,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         productWindow = findViewById(R.id.productWindow)
         productMac = findViewById(R.id.productMac)
 
-
+        val slideUp = AnimationUtils.loadAnimation(this, R.anim.slide_up)
 
 
         loginBtn.setOnClickListener {
@@ -67,6 +70,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * 카테고리 선택시 상품 변경
+     */
     fun productChange(view: View) {
         when (view.id) {
             R.id.img_mac -> {
@@ -81,6 +87,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * 윈도우 제품 클릭시
+     */
     fun productWindowClicked(view: View) {
         val index = productWindow.indexOfChild(view)
         val selectedProduct = Product.productWindowList[index]
@@ -92,15 +101,23 @@ class MainActivity : AppCompatActivity() {
             )
         }
         resultLauncher.launch(intent)
+        overridePendingTransition(R.anim.slide_up, 0)
     }
 
+    /**
+     * 맥 제품 클릭시
+     */
     fun productMacClicked(view: View) {
         val index = productMac.indexOfChild(view)
         val selectedProduct = Product.productMacList[index]
 
-        val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra("selectedProduct", selectedProduct)
+        val intent = Intent(this, DetailActivity::class.java).apply {
+            putExtra(
+                "selectedProduct", selectedProduct
+            )
+        }
         resultLauncher.launch(intent)
+        overridePendingTransition(R.anim.slide_up, 0)
     }
 
 }
