@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isVisible
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -107,5 +108,3 @@ class MainActivity : AppCompatActivity() {
         updateProductScrollView(selectedCategory)
     }
 }
-
-
