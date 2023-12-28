@@ -6,14 +6,15 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val btn_LogIn = findViewById<Button>(R.id.btn_login)
-        val btn_SignUp = findViewById<Button>(R.id.btn_signup)
+        val btn_LogIn = findViewById<ConstraintLayout>(R.id.constraintLayoutLogInBuottn)
+        val btn_SignUp = findViewById<ConstraintLayout>(R.id.constraintLayoutSignUpButton)
         val ed_Id = findViewById<EditText>(R.id.ed_id)
         val ed_Pass = findViewById<EditText>(R.id.ed_pass)
 //        회원가입 데이터에 아이디가 있는지 확인하고 없으면 재입력, 있으면 로그인 성공

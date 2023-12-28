@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var productWindow: LinearLayout
     private lateinit var productMac: LinearLayout
 
-    object list{
+    object list {
         var buyList = mutableListOf<Product?>()
         var basketList = mutableListOf<Product?>()
 
