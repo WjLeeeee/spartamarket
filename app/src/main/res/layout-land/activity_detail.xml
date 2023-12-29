@@ -102,7 +102,7 @@
 
             <android.widget.Button
                 android:id="@+id/btn_cancle"
-                style="@style/backButton"
+                style="@style/MyButton"
                 android:layout_margin="20dp"
                 android:layout_gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
