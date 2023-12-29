@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         //레이아웃에 데이터 띄우기
         updateProductScrollView(selectedCategory)
-
+        resultLauncher
         loginBtn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
@@ -78,14 +78,14 @@ class MainActivity : AppCompatActivity() {
             val productImage = productView.findViewById<ImageView>(R.id.productImageView)
             val productName = productView.findViewById<TextView>(R.id.productNameTextView)
             productImage.setImageResource(product.imageResId)
-            productName.text = product.name
+            productName.text = getString(product.nameResId)
 
             //상품 클릭시
             productView.setOnClickListener {
                 val intent = Intent(this, DetailActivity::class.java)
                 intent.putExtra("productImageResId", product.imageResId)
-                intent.putExtra("productName", product.name)
-                intent.putExtra("productDescription", product.description)
+                intent.putExtra("productNameResId", product.nameResId)
+                intent.putExtra("productDescriptionResId", product.descriptionResId)
                 resultLauncher.launch(intent)
                 overridePendingTransition(R.anim.slide_up, 0) //아래서 위로 올라오는 애니메이션
             }
