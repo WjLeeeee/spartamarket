@@ -106,7 +106,7 @@ class MypageActivity : AppCompatActivity() {
     // 저장된 list값을 읽어들어서 장바구니목록을 보여준다
     private fun viewCartList() {
         //객체에 따른 레이아웃에 CardView 값 추가
-        layoutCart = findViewById(R.id.sv_cart_layout)
+        layoutCart = findViewById(R.id.sv_layout_cart)
 
         //layout_card의 xml 속성값을 copy 하고싶다.
         layoutCard = findViewById(R.id.layout_card)
@@ -148,7 +148,7 @@ class MypageActivity : AppCompatActivity() {
     // 저장된 list값을 읽어들어서 주문목록을 보여준다
     private fun viewOrderList() {
         //객체에 따른 레이아웃에 CardView 값 추가
-        layoutCart = findViewById(R.id.sv_order_layout)
+        layoutCart = findViewById(R.id.sv_layout_order)
 
         //layout_card의 xml 속성값을 copy 하고싶다.
         layoutCard = findViewById(R.id.layout_card_horizontal)
