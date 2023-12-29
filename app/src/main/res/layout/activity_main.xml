@@ -69,7 +69,10 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:onClick="productChange"
-                    android:src="@drawable/category_mac_selector" />
+                    android:src="@drawable/category_mac_selector"
+                    android:background="@drawable/circular_background"
+                    android:scaleType="centerCrop"
+                    android:clipToOutline="true"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -91,7 +94,10 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:onClick="productChange"
-                    android:src="@drawable/category_window_selector"/>
+                    android:src="@drawable/category_window_selector"
+                    android:background="@drawable/circular_background"
+                    android:scaleType="centerCrop"
+                    android:clipToOutline="true"/>
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
