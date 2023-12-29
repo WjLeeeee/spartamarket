@@ -32,7 +32,13 @@ class LoginActivity : AppCompatActivity() {
             val homeIntent = Intent(this, MainActivity::class.java)
             if (ed_Id.text.toString().trim().isNotEmpty() && ed_Pass.text.toString().trim().isNotEmpty() && ed_Id.text.toString() == savedId && ed_Pass.text.toString() == savedPw) {
                 Toast.makeText(this, getString(R.string.toast_login), Toast.LENGTH_SHORT).show()
-                startActivity(homeIntent)
+                val intent = Intent(this, MainActivity::class.java).apply {
+                    putExtra("id", ed_Id.text.toString())
+
+                }
+                setResult(RESULT_OK, intent)
+
+                if (!isFinishing) finish()
             }else {
                 Toast.makeText(this, getString(R.string.toast_err), Toast.LENGTH_SHORT).show()
             }
