@@ -5,6 +5,7 @@
     android:id="@+id/layout_mypage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MypageActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -72,15 +73,17 @@
             app:layout_constraintStart_toStartOf="@+id/tv_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/btn_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
             android:layout_marginEnd="16dp"
             android:text="@string/mypage_logout_btn"
+            android:background="@drawable/buttonshape"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.492" />
 
         <ImageView
             android:id="@+id/iv_profile"
@@ -117,12 +120,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/btn_buy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
             android:layout_marginEnd="16dp"
             android:text="@string/mypage_purchase_product"
+            android:background="@drawable/buttonshape"
             app:layout_constraintBottom_toBottomOf="@+id/tv_cart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_cart" />
@@ -208,5 +212,4 @@
             </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -229,13 +229,14 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextUserPhoneNum"
         app:layout_constraintVertical_bias="0.571" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/signUpBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:layout_marginStart="230dp"
         android:layout_marginBottom="30dp"
         android:text="@string/signup_signup_btn"
+        android:background="@drawable/buttonshape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
