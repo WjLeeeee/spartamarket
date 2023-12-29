@@ -22,8 +22,10 @@ class SignupActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var userPassword: EditText
+    private lateinit var userEmail: EditText
     private lateinit var confirmPassword: EditText
-    private lateinit var errorMessageTextView: TextView
+    private lateinit var errorMessageTextViewPwd: TextView
+    private lateinit var errorMessageTextViewId: TextView
     private lateinit var signUpBtn: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,30 +33,44 @@ class SignupActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences("user_info", MODE_PRIVATE)
 
-        val userEmail = findViewById<EditText>(R.id.editTextUserEmail)
+        userEmail = findViewById<EditText>(R.id.editTextUserEmail)
         userPassword = findViewById<EditText>(R.id.editTextUserPassword)
         val userName = findViewById<EditText>(R.id.editTextUsername)
         val userPhoneNum = findViewById<EditText>(R.id.editTextUserPhoneNum)
         val checkBoxAgree = findViewById<CheckBox>(R.id.checkBoxAgree)
         confirmPassword = findViewById<EditText>(R.id.editTextConfirmPassword)
-        errorMessageTextView = findViewById<TextView>(R.id.errorMessageTextView)
+        errorMessageTextViewPwd = findViewById<TextView>(R.id.errorMessageTextViewPwd)
+        errorMessageTextViewId = findViewById<TextView>(R.id.errorMessageTextViewId)
         signUpBtn = findViewById<Button>(R.id.signUpBtn)
 
 
-        confirmPassword.addTextChangedListener(object : TextWatcher {
+        userEmail.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {
-                // Do nothing
+
             }
 
             override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
-                // Do nothing
+                checkEmailMatch(userEmail.text.toString())
             }
 
             override fun afterTextChanged(editable: Editable?) {
-                checkPasswordMatch()
+
             }
         })
 
+        confirmPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
+                checkPasswordMatch()
+            }
+
+            override fun afterTextChanged(editable: Editable?) {
+
+            }
+        })
 
 
         signUpBtn.setOnClickListener {
@@ -71,29 +87,16 @@ class SignupActivity : AppCompatActivity() {
             if(id.isEmpty() || password.isEmpty() || name.isEmpty() || phoneNum.isEmpty()) {
                 Toast.makeText(this, "빈 칸을 모두 채워주세요.", Toast.LENGTH_SHORT).show()
             }
-            // 아이디에 이메일 형식으로 입력하지 않을 경우, 토스트 메세지 출력
-            else if(!Patterns.EMAIL_ADDRESS.matcher(id).matches()) {
-                Toast.makeText(this, "아이디를 이메일 형식으로 입력해주세요", Toast.LENGTH_SHORT).show()
-            }
-            // 비밀번호에 특수문자가 없을 경우, 토스트 메세지 출력
-            else if(!containsSpecialCharacter(password)) {
-                Toast.makeText(this, "비밀번호에 특수문자를 포함하여 주세요", Toast.LENGTH_SHORT).show()
-            }
-            // 비밀번호가 6자 이하인 경우 토스트 메세지 출력
-            else if(password.length < 6) {
-                Toast.makeText(this, "비밀번호를 6자 이상으로 입력해주세요", Toast.LENGTH_SHORT).show()
-            }
 
             // 약관동의에 체크하지 않을 경우, 토스트 메세지 출력
             else if(!checkBoxAgree.isChecked) {
                 Toast.makeText(this, "약관에 동의해 주세요.", Toast.LENGTH_SHORT).show()
             }
 
-
             // 조건을 충족할 경우 회원가입 진행
             else {
                 // 에러 메세지 텍스트뷰를 숨기기
-                val errorMessegeTextView = findViewById<TextView>(R.id.errorMessageTextView)
+                val errorMessegeTextView = findViewById<TextView>(R.id.errorMessageTextViewPwd)
                 errorMessegeTextView.visibility = View.GONE
 
                 // SharedPreferences를 사용하여 사용자 데이터 저장
@@ -114,21 +117,46 @@ class SignupActivity : AppCompatActivity() {
         backButton.setOnClickListener {
             finish()
         }
+    }
 
+
+    // 이메일 형식인지 확인하는 메세지 로직
+    private fun checkEmailMatch(email:String) {
+
+        if (isEmailFormatValid(email)) {
+            errorMessageTextViewId.visibility = View.GONE
+        } else {
+            errorMessageTextViewId.visibility = View.VISIBLE
+            errorMessageTextViewId.text = "이메일 형식으로 입력하여 주세요."
+        }
     }
 
     // 비빌번호 확인 메세지 로직
     private fun checkPasswordMatch() {
-        val password = userPassword.text.toString()
-        val confirmPwd = confirmPassword.text.toString()
+        val password = userPassword.text.toString().trim()
+        val confirmPwd = confirmPassword.text.toString().trim()
 
-        if (password == confirmPwd) {
-            errorMessageTextView.visibility = View.GONE
+        //특수문자 포함 여부 확인
+        val containsSpecialCharacter = containsSpecialCharacter(password)
+
+        if (password == confirmPwd && containsSpecialCharacter) {
+            errorMessageTextViewPwd.visibility = View.GONE
             signUpBtn.isEnabled = true
         } else {
-            errorMessageTextView.visibility = View.VISIBLE
-            errorMessageTextView.text = "비밀번호가 일치하지 않습니다."
-            errorMessageTextView.setTextColor(ContextCompat.getColor(this, android.R.color.holo_red_light))
+            errorMessageTextViewPwd.visibility = View.VISIBLE
+
+            if(password != confirmPwd) {
+                errorMessageTextViewPwd.text = "비밀번호가 일치하지 않습니다."
+            } else if(password.length < 6) {
+                errorMessageTextViewPwd.text = "비밀번호를 6자 이상으로 입력해주세요."
+            } else if(confirmPwd.length < 6) {
+                errorMessageTextViewPwd.text = "비밀번호를 6자 이상으로 입력해주세요."
+            } else if(!containsSpecialCharacter) {
+                errorMessageTextViewPwd.text = "비밀번호에 특수문자를 포함해주세요."
+            }
+
+
+            errorMessageTextViewPwd.setTextColor(ContextCompat.getColor(this, android.R.color.holo_red_light))
             signUpBtn.isEnabled = false
         }
     }
@@ -137,6 +165,10 @@ class SignupActivity : AppCompatActivity() {
     private fun containsSpecialCharacter(password: String): Boolean {
         val pattern: Pattern = Pattern.compile("[!@#$%^&*(),.?\":{}|<>]")
         return pattern.matcher(password).find()
+    }
+// 이메일 확인 로직
+    private fun isEmailFormatValid(email: String): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
     // 입력받은 자료 저장
