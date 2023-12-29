@@ -19,4 +19,24 @@
     <string name="login_market">Sparta Market</string>
     <string name="toast_err">Please check ID/password.</string>
     <string name="toast_login">Login Successful</string>
+    <string name="window1">Asus Vivobook Go 15</string>
+    <string name="window1_des">CPUmodel-Ryzen5, SSD-256GB, RAM-16GB, OS-Free DOS</string>
+    <string name="window2">Lenovo Ideapad Slim1 15IJL7 15.6</string>
+    <string name="window2_des">CPUmodel-Celeron, SSD-128GB, RAM-4GB, OS-WIN11Home</string>
+    <string name="window3">13 Notebook Windows 10</string>
+    <string name="window3_des">CPU-Intel Core i5-10210u i7-10510u  RAM-DDR4  SSD-512GB, RAM-DDR4 8GB, OS-Window10</string>
+    <string name="window4">Samsung 2021Notebook Plus2 15.6</string>
+    <string name="window4_des">CPUmodel-Pentium, SSD-NVMe256GB, RAM-8GB, OS-WIN10Pro, model-NT550XDA-K24AW</string>
+    <string name="window5">TOPTON Ultra Gaming Notebook</string>
+    <string name="window5_des">CPUmodel-Ryzen, SSD-2TB, RAM-36GB, OS-Free DOS</string>
+    <string name="mac1">Apple 2020 Mac Air 13</string>
+    <string name="mac1_des">CPUmodel-M1, SSD-256GB, RAM-8GB</string>
+    <string name="mac2">Apple 2022 Mac Air 13 M2</string>
+    <string name="mac2_des">CPUmodel-M2 8core, GPUmodel-GPU 8core, SSD-256GB, RAM-8GB</string>
+    <string name="mac3">Apple 2022 Mac Pro 13 M2</string>
+    <string name="mac3_des">CPUmodel-M2, GPUmodel-GPU 10core, SSD-256GB, RAM-8GB</string>
+    <string name="mac4">Apple 2021 Mac Pro 16</string>
+    <string name="mac4_des">CPUmodel-M1 Pro10core, GPUmodel-GPU 16core, SSD-1024GB, RAM-16GB</string>
+    <string name="mac5">Apple 2021 Mac Pro 14</string>
+    <string name="mac5_des">CPUmode-M1 Pro8core, GPU model-GPU 14core, SSD-512GB, RAM-16GB</string>
 </resources>

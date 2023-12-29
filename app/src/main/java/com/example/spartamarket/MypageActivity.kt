@@ -89,7 +89,7 @@ class MypageActivity : AppCompatActivity() {
 
             //Product 의 값 넣기
             imageView.setImageResource(it?.imageResId ?: 0)
-            textView.setText(it?.name)
+            textView.setText(it!!.nameResId)
             textView.setBackgroundColor(Color.parseColor("#FFFFFF"))
 
             //View ID 지정
@@ -130,7 +130,7 @@ class MypageActivity : AppCompatActivity() {
             textView.layoutParams = textViewParams
 
             imageView.setImageResource(it?.imageResId ?: 0)
-            textView.setText(it?.name)
+            textView.setText(it!!.nameResId)
             textView.setBackgroundColor(Color.parseColor("#FFFFFF"))
 
             cardView.addView(constraintLayout)
