@@ -134,6 +134,7 @@ class MypageActivity : AppCompatActivity() {
 
             //View ID 지정 : 해당 리스트의 index값 을 부여
 //            cardView.id = ViewCompat.generateViewId()
+            
             cardView.id = basketList.indexOf(it)
             cardViewIdMap.put(cardView.id, false)
             //View에 추가
