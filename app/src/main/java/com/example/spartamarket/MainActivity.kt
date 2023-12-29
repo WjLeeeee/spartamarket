@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     //기본 카테고리는 mac으로 설정
-    private var selectedCategory:String = "mac"
+    private var selectedCategory: String = "mac"
     private lateinit var productList: List<Product>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         //레이아웃에 데이터 띄우기
         updateProductScrollView(selectedCategory)
-        resultLauncher
+
         loginBtn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
@@ -93,14 +93,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     /**
      * 카테고리 선택시 상품 변경
      */
-    fun productChange(view:View){
+    fun productChange(view: View) {
         when (view.id) {
             R.id.img_mac -> {
                 selectedCategory = "mac"
             }
+
             R.id.img_window -> {
                 selectedCategory = "window"
             }
