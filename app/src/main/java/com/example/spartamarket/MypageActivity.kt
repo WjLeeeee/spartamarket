@@ -1,6 +1,7 @@
 package com.example.spartamarket
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 
@@ -186,7 +187,15 @@ class MypageActivity : AppCompatActivity() {
         }
 
         btnLogout.setOnClickListener {
-            Toast.makeText(this,"로그아웃이 되었습니다.",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, MainActivity::class.java).apply {
+
+
+            }
+
+            setResult(RESULT_OK, intent)
+
+            if (!isFinishing) finish()
+            Toast.makeText(this, "로그아웃이 되었습니다.", Toast.LENGTH_SHORT).show()
             //로그아웃 처리 필요
             finish()
         }

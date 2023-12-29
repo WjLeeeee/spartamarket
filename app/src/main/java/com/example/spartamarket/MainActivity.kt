@@ -5,10 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private val loginBtn: Button by lazy { findViewById(R.id.login_btn) }
     private val mypageBtn: Button by lazy { findViewById(R.id.mypage_btn) }
+    lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
 
     private lateinit var scrollView: ScrollView
     private lateinit var productListInnerLayout: LinearLayout
@@ -34,15 +38,18 @@ class MainActivity : AppCompatActivity() {
                 //받은 데이터 처리
                 val buyProduct = result.data?.getParcelableExtra<Product>("BuyProduct")
                 val basketProduct = result.data?.getParcelableExtra<Product>("BasketProduct")
-
                 if (buyProduct != null) list.buyList.add(buyProduct)
                 if (basketProduct != null) list.basketList.add(basketProduct)
+                val user_id = result.data?.getStringExtra("id") ?: ""
+                logIn = user_id
+                Toast.makeText(this, logIn, Toast.LENGTH_SHORT).show()
             }
         }
 
     //기본 카테고리는 mac으로 설정
     private var selectedCategory: String = "mac"
     private lateinit var productList: List<Product>
+    var logIn:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,11 +64,17 @@ class MainActivity : AppCompatActivity() {
 
         loginBtn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+
+            resultLauncher.launch(intent)
         }
         mypageBtn.setOnClickListener {
-            val intent = Intent(this, MypageActivity::class.java)
-            startActivity(intent)
+            if (logIn != null) {
+                val intent = Intent(this, MypageActivity::class.java)
+                resultLauncher.launch(intent)
+            }else {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 
