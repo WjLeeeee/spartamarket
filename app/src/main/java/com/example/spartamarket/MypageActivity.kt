@@ -128,10 +128,11 @@ class MypageActivity : AppCompatActivity() {
 
             //Product 의 값 넣기
             imageView.setImageResource(it?.imageResId ?: 0)
-            textView.setText(it!!.nameResId)
+            //it(Product) 가 비어있지않고 그 해당되는 name이 비어있지않다면
+            it?.let { name -> textView.setText(name.nameResId) }
             textView.setBackgroundColor(Color.parseColor("#FFFFFF"))
 
-            //View ID 지정
+            //View ID 지정 : 해당 리스트의 index값 을 부여
 //            cardView.id = ViewCompat.generateViewId()
             cardView.id = basketList.indexOf(it)
             cardViewIdMap.put(cardView.id, false)
@@ -169,7 +170,7 @@ class MypageActivity : AppCompatActivity() {
             textView.layoutParams = textViewParams
 
             imageView.setImageResource(it?.imageResId ?: 0)
-            textView.setText(it!!.nameResId)
+            it?.let { name -> textView.setText(name.nameResId) }
             textView.setBackgroundColor(Color.parseColor("#FFFFFF"))
 
             cardView.addView(constraintLayout)
