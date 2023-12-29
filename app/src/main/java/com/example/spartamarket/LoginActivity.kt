@@ -19,6 +19,7 @@ class LoginActivity : AppCompatActivity() {
         val btn_SignUp = findViewById<ConstraintLayout>(R.id.constraintLayoutSignUpButton)
         val ed_Id = findViewById<EditText>(R.id.ed_id)
         val ed_Pass = findViewById<EditText>(R.id.ed_pass)
+        val btn_Back = findViewById<ConstraintLayout>(R.id.constraintLayoutBackBuottn)
 //        회원가입 데이터에 아이디가 있는지 확인하고 없으면 재입력, 있으면 로그인 성공
 //        로그인 버튼
         btn_LogIn.setOnClickListener {
@@ -26,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
             val sharedPreference = getSharedPreferences("user_info", Context.MODE_PRIVATE)
             val savedId = sharedPreference.getString("userId", "")
             val savedPw = sharedPreference.getString("userPassword", "")
+//            val email = MyApplication.prefs.getString("email", "")
 
             val homeIntent = Intent(this, MainActivity::class.java)
             if (ed_Id.text.toString().trim().isNotEmpty() && ed_Pass.text.toString().trim().isNotEmpty() && ed_Id.text.toString() == savedId && ed_Pass.text.toString() == savedPw) {
@@ -42,6 +44,10 @@ class LoginActivity : AppCompatActivity() {
         btn_SignUp.setOnClickListener {
             val signUpIntent = Intent(this, SignupActivity::class.java)
             startActivity(signUpIntent)
+        }
+
+        btn_Back.setOnClickListener {
+            finish()
         }
 
 
