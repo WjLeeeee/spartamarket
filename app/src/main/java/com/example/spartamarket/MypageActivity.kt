@@ -15,11 +15,11 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.spartamarket.MainActivity.list.basketList
 import com.example.spartamarket.MainActivity.list.buyList
-import org.w3c.dom.Text
 
 class MypageActivity : AppCompatActivity() {
 
 
+    //레이아웃 객체화
     private lateinit var btnLogout: Button
     private lateinit var btnBuy: Button
     private lateinit var btnBack : ImageView
@@ -30,22 +30,9 @@ class MypageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mypage)
 
-        cardViewIdMap = mutableMapOf()
-        //button id 연결
-        btnLogout = findViewById(R.id.btn_logout)
-        btnBuy = findViewById(R.id.btn_buy)
-        btnBack = findViewById(R.id.iv_back)
-
-        viewUserInfo()
-        setOnButtonCallBacks()
-
-
-        //장바구니,주문상품 리스트를 출력하는 부분
-        viewCartList()
-        viewOrderList()
-        onClickedCardView()
+        //화면을 출력하는부분
+        printLayout()
 
     }
 
@@ -59,19 +46,27 @@ class MypageActivity : AppCompatActivity() {
         name.setText(getNameSharedPrefer)
         email.setText(getEmailSharedPrefer)
     }
-    fun updateUI(){
+
+    fun printLayout(){
+
         setContentView(R.layout.activity_mypage)
+
+        btnLogout = findViewById(R.id.btn_logout)
+        btnBuy = findViewById(R.id.btn_buy)
+        btnBack = findViewById(R.id.iv_back)
         cardViewIdMap = mutableMapOf()
         setOnButtonCallBacks()
+        viewUserInfo()
         viewCartList()
         viewOrderList()
         onClickedCardView()
+
     }
 
     // 저장된 list값을 읽어들어서 장바구니목록을 보여준다
     private fun viewCartList() {
         //객체에 따른 레이아웃에 CardView 값 추가
-        var layoutCart = findViewById<LinearLayout>(R.id.cart_layout)
+        var layoutCart = findViewById<LinearLayout>(R.id.sv_cart_layout)
 
         //layout_card의 xml 속성값을 copy 하고싶다.
         var layoutCard = findViewById<ConstraintLayout>(R.id.layout_card)
@@ -113,7 +108,7 @@ class MypageActivity : AppCompatActivity() {
     // 저장된 list값을 읽어들어서 주문목록을 보여준다
     private fun viewOrderList() {
         //객체에 따른 레이아웃에 CardView 값 추가
-        var layoutCart = findViewById<LinearLayout>(R.id.order_layout)
+        var layoutCart = findViewById<LinearLayout>(R.id.sv_order_layout)
 
         //layout_card의 xml 속성값을 copy 하고싶다.
         var layoutCard = findViewById<ConstraintLayout>(R.id.layout_card_horizontal)
@@ -181,8 +176,8 @@ class MypageActivity : AppCompatActivity() {
 
                 deleteList.removeFirst()
             }
-            //UI 업데이트 함수
-            updateUI()
+            //화면을 재출력
+            printLayout()
         }
 
         btnLogout.setOnClickListener {
