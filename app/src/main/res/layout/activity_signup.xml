@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".SignupActivity">
 
+
     <ImageView
         android:id="@+id/passwordIcon2"
         android:layout_width="55dp"
@@ -27,9 +28,8 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75"
+        app:layout_constraintVertical_bias="0.321"
         app:srcCompat="@drawable/logo_icon" />
-
 
     <ImageView
         android:id="@+id/passwordIcon"
@@ -183,9 +183,10 @@
         android:text="전체 동의에는 필수 및 선택 정보에 대한 동의가 포함되어 있으며, 개별적으로 동의를 선택 하실 수 있습니다."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.262"
+        app:layout_constraintHorizontal_bias="0.225"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUserPhoneNum" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextUserPhoneNum"
+        app:layout_constraintVertical_bias="0.474" />
 
     <CheckBox
         android:id="@+id/checkBoxAgree"
@@ -194,10 +195,10 @@
         android:text="모두 확인하였으며 동의합니다."
         app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextUserPhoneNum"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.571" />
 
     <Button
         android:id="@+id/signUpBtn"
