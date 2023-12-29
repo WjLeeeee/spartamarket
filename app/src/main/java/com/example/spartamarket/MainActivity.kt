@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, MypageActivity::class.java)
                 resultLauncher.launch(intent)
             }else {
-                Toast.makeText(this,"로그인 해주세요!",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,R.string.main_need_login,Toast.LENGTH_SHORT).show()
             }
         }
     }

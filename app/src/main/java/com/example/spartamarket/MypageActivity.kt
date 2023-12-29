@@ -78,11 +78,11 @@ class MypageActivity : AppCompatActivity() {
             }
             //화면을 재출력
             printLayout()
-            Toast.makeText(this,"주문 완료!",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,R.string.mypage_order_complete,Toast.LENGTH_SHORT).show()
         }
 
         btnLogout.setOnClickListener {
-            Toast.makeText(this,"로그아웃이 되었습니다.",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,R.string.mypage_logout_finish,Toast.LENGTH_SHORT).show()
             //로그아웃 처리 필요
             val intent = Intent(this,MainActivity::class.java).apply{
                 putExtra("id","")
