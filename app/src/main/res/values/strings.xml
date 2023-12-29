@@ -39,4 +39,21 @@
     <string name="mac4_des">CPUmodel-M1 Pro10core, GPUmodel-GPU 16core, SSD-1024GB, RAM-16GB</string>
     <string name="mac5">Apple 2021 Mac Pro 14</string>
     <string name="mac5_des">CPUmode-M1 Pro8core, GPU model-GPU 14core, SSD-512GB, RAM-16GB</string>
+    <string name="signup_login">Login</string>
+    <string name="signup_information">Please enter member information</string>
+    <string name="signup_email">Id(Email)</string>
+    <string name="signup_password">Password</string>
+    <string name="signup_password_check">Password Check</string>
+    <string name="signup_name">Name</string>
+    <string name="signup_phone_num">Phone Number</string>
+    <string name="signup_check">We\'ve all checked and agree.</string>
+    <string name="signup_check_detail">The full consent includes consent to the required and optional information, and you can choose consent individually.</string>
+    <string name="signup_signup_btn">SignUp</string>
+    <string name="mypage_name">Name</string>
+    <string name="mypage_email">Email</string>
+    <string name="mypage_basket">Basket</string>
+    <string name="mypage_purchase_product">Purchase Product</string>
+    <string name="mypage_logout_btn">Sign Out</string>
+    <string name="mypage_purchase_btn">Purchase</string>
+
 </resources>

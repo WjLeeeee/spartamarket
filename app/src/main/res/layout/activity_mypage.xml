@@ -52,9 +52,9 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/mypage_name"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="이름"
             android:textSize="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="이메일"
+            android:text="@string/mypage_email"
             android:textColor="#9A9A9A"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="@+id/tv_name"
@@ -74,8 +74,8 @@
             android:id="@+id/btn_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/mypage_logout_btn"
             android:layout_marginEnd="16dp"
-            android:text="로그아웃"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="장바구니"
+            android:text="@string/mypage_basket"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -109,7 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="구매"
+            android:text="@string/mypage_purchase_product"
             app:layout_constraintBottom_toBottomOf="@+id/tv_cart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_cart" />
@@ -162,7 +162,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="주문 상품"
+            android:text="@string/mypage_purchase_product"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
