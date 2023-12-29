@@ -21,13 +21,17 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+        val productNameResId = intent.getIntExtra("productNameResId", 0)
         val productImgResId = intent.getIntExtra("productImageResId", 0)
-        val productName = intent.getStringExtra("productName")
-        val productDescription = intent.getStringExtra("productDescription")
+        val productDescriptionResId = intent.getIntExtra("productDescriptionResId", 0)
+
+        val productName = getString(productNameResId)
+        val productDescription = getString(productDescriptionResId)
+
         chooseProductImg.setImageResource(productImgResId)
         chooseProductName.text = productName
         chooseProductDes.text = productDescription
-        val selectedProduct = Product(productName ?: "", productImgResId, productDescription ?: "")
+        val selectedProduct = Product(productNameResId, productImgResId, productDescriptionResId)
         // 장바구니 버튼
         basketBtn.setOnClickListener {
             val returnIntent = Intent()
