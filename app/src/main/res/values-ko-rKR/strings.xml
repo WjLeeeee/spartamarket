@@ -55,4 +55,5 @@
     <string name="mypage_purchase_product">주문 상품</string>
     <string name="mypage_logout_btn">로그아웃</string>
     <string name="mypage_purchase_btn">구매</string>
+
 </resources>
