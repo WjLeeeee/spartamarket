@@ -22,6 +22,7 @@ class MypageActivity : AppCompatActivity() {
 
     private lateinit var btnLogout: Button
     private lateinit var btnBuy: Button
+    private lateinit var btnBack : ImageView
 
     //(뷰 Id,클릭했는가)
     private lateinit var cardViewIdMap : MutableMap<Int, Boolean>
@@ -30,10 +31,13 @@ class MypageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mypage)
+
         cardViewIdMap = mutableMapOf()
         //button id 연결
         btnLogout = findViewById(R.id.btn_logout)
         btnBuy = findViewById(R.id.btn_buy)
+        btnBack = findViewById(R.id.iv_back)
+
         viewUserInfo()
         setOnButtonCallBacks()
 
@@ -180,8 +184,14 @@ class MypageActivity : AppCompatActivity() {
             //UI 업데이트 함수
             updateUI()
         }
+
         btnLogout.setOnClickListener {
             Toast.makeText(this,"로그아웃이 되었습니다.",Toast.LENGTH_SHORT).show()
+            //로그아웃 처리 필요
+            finish()
+        }
+
+        btnBack.setOnClickListener {
             finish()
         }
     }

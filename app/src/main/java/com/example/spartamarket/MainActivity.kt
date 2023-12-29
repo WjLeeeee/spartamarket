@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     //기본 카테고리는 mac으로 설정
-    private var selectedCategory:String = "mac"
+    private var selectedCategory: String = "mac"
     private lateinit var productList: List<Product>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,29 +78,31 @@ class MainActivity : AppCompatActivity() {
             val productImage = productView.findViewById<ImageView>(R.id.productImageView)
             val productName = productView.findViewById<TextView>(R.id.productNameTextView)
             productImage.setImageResource(product.imageResId)
-            productName.text = product.name
+            productName.text = getString(product.nameResId)
 
             //상품 클릭시
             productView.setOnClickListener {
                 val intent = Intent(this, DetailActivity::class.java)
                 intent.putExtra("productImageResId", product.imageResId)
-                intent.putExtra("productName", product.name)
-                intent.putExtra("productDescription", product.description)
-                startActivity(intent)
+                intent.putExtra("productNameResId", product.nameResId)
+                intent.putExtra("productDescriptionResId", product.descriptionResId)
+                resultLauncher.launch(intent)
                 overridePendingTransition(R.anim.slide_up, 0) //아래서 위로 올라오는 애니메이션
             }
             productListInnerLayout.addView(productView)
         }
     }
 
+
     /**
      * 카테고리 선택시 상품 변경
      */
-    fun productChange(view:View){
+    fun productChange(view: View) {
         when (view.id) {
             R.id.img_mac -> {
                 selectedCategory = "mac"
             }
+
             R.id.img_window -> {
                 selectedCategory = "window"
             }
