@@ -43,7 +43,6 @@ class MainActivity : AppCompatActivity() {
                 val user_id = result.data?.getStringExtra("id") ?: ""
                 if(user_id !="") logIn = user_id
                 else logIn =""//로그아웃 상태
-                Toast.makeText(this, logIn, Toast.LENGTH_SHORT).show()
             }
 
             if(logIn!="") loginBtn.isVisible = false
@@ -76,9 +75,7 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, MypageActivity::class.java)
                 resultLauncher.launch(intent)
             }else {
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-                Toast.makeText(this,"로그인 해주세요!",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,R.string.main_need_login,Toast.LENGTH_SHORT).show()
             }
         }
     }
