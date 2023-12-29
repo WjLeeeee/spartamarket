@@ -39,4 +39,20 @@
     <string name="mac3_des">CPU 모델명-M2, GPU 모델명-GPU 10코어, 저장용량-256GB, RAM용량-8GB</string>
     <string name="mac2_des">CPU 모델명-M2 8코어, GPU 모델명-GPU 8코어, 저장용량-256GB, RAM용량-8GB</string>
     <string name="mac1_des">CPU 모델명-M1, 저장용량-256GB, RAM용량-8GB</string>
+    <string name="signup_login">로그인</string>
+    <string name="signup_information">회원정보를 입력해주세요</string>
+    <string name="signup_email">아이디(이메일)</string>
+    <string name="signup_password">비밀번호</string>
+    <string name="signup_password_check">비밀번호 확인</string>
+    <string name="signup_name">이름</string>
+    <string name="signup_phone_num">휴대폰 번호</string>
+    <string name="signup_check">모두 확인하였으며 동의합니다.</string>
+    <string name="signup_check_detail">전체 동의에는 필수 및 선택 정보에 대한 동의가 포함되어 있으며, 개별적으로 동의를 선택 하실 수 있습니다.</string>
+    <string name="signup_signup_btn">회원가입</string>
+    <string name="mypage_name">이름</string>
+    <string name="mypage_email">이메일</string>
+    <string name="mypage_basket">장바구니</string>
+    <string name="mypage_purchase_product">주문 상품</string>
+    <string name="mypage_logout_btn">로그아웃</string>
+    <string name="mypage_purchase_btn">구매</string>
 </resources>
