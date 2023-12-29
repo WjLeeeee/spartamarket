@@ -86,7 +86,8 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("productImageResId", product.imageResId)
                 intent.putExtra("productName", product.name)
                 intent.putExtra("productDescription", product.description)
-                startActivity(intent)
+
+                resultLauncher.launch(intent)
                 overridePendingTransition(R.anim.slide_up, 0) //아래서 위로 올라오는 애니메이션
             }
             productListInnerLayout.addView(productView)
