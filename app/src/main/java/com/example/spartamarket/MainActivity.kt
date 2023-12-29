@@ -41,9 +41,13 @@ class MainActivity : AppCompatActivity() {
                 if (buyProduct != null) list.buyList.add(buyProduct)
                 if (basketProduct != null) list.basketList.add(basketProduct)
                 val user_id = result.data?.getStringExtra("id") ?: ""
-                logIn = user_id
+                if(user_id !="") logIn = user_id
+                else logIn =""//로그아웃 상태
                 Toast.makeText(this, logIn, Toast.LENGTH_SHORT).show()
             }
+
+            if(logIn!="") loginBtn.isVisible = false
+            else loginBtn.isVisible = true
         }
 
     //기본 카테고리는 mac으로 설정
@@ -68,12 +72,13 @@ class MainActivity : AppCompatActivity() {
             resultLauncher.launch(intent)
         }
         mypageBtn.setOnClickListener {
-            if (logIn != null) {
+            if (logIn != "") {
                 val intent = Intent(this, MypageActivity::class.java)
                 resultLauncher.launch(intent)
             }else {
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
+                Toast.makeText(this,"로그인 해주세요!",Toast.LENGTH_SHORT).show()
             }
         }
     }

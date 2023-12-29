@@ -7,6 +7,7 @@ import android.graphics.Color
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -16,72 +17,110 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.spartamarket.MainActivity.list.basketList
 import com.example.spartamarket.MainActivity.list.buyList
-import org.w3c.dom.Text
 
 class MypageActivity : AppCompatActivity() {
 
-
+    //버튼,ImageView(버튼) 객체화
     private lateinit var btnLogout: Button
     private lateinit var btnBuy: Button
     private lateinit var btnBack : ImageView
+
+    //view_XXX_List()관련 객체화
+    private lateinit var layoutCart : LinearLayout
+
+    private lateinit var layoutCard : ConstraintLayout
+    private lateinit var cardViewParams : ViewGroup.LayoutParams
+    private lateinit var imageViewParams : ViewGroup.LayoutParams
+    private lateinit var textViewParams : ViewGroup.LayoutParams
 
     //(뷰 Id,클릭했는가)
     private lateinit var cardViewIdMap : MutableMap<Int, Boolean>
     private lateinit var sharedPreferences: SharedPreferences
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //화면을 출력하는 부분
+        printLayout()
+
+    }
+    private fun printLayout(){
+
         setContentView(R.layout.activity_mypage)
 
-        cardViewIdMap = mutableMapOf()
-        //button id 연결
         btnLogout = findViewById(R.id.btn_logout)
         btnBuy = findViewById(R.id.btn_buy)
         btnBack = findViewById(R.id.iv_back)
-
-        viewUserInfo()
+        cardViewIdMap = mutableMapOf()
         setOnButtonCallBacks()
-
-
-        //장바구니,주문상품 리스트를 출력하는 부분
+        viewUserInfo()
         viewCartList()
         viewOrderList()
         onClickedCardView()
 
     }
 
-    //내부저장된 값을 불려들어 유저의 정보를 입력
+    //버튼 클릭시 콜백이벤트 처리
+    private fun setOnButtonCallBacks(){
+
+        btnBuy.setOnClickListener {
+            //지워질 list를 저장
+            val deleteList = mutableListOf<Product?>()
+            cardViewIdMap.filter { it.value }.forEach { (idx, _) ->
+                deleteList.add(basketList[idx])
+            }
+            while(deleteList.isNotEmpty()){
+                buyList.add(deleteList.first())
+                basketList.remove(deleteList.first())
+
+                deleteList.removeFirst()
+            }
+            //화면을 재출력
+            printLayout()
+            Toast.makeText(this,"주문 완료!",Toast.LENGTH_SHORT).show()
+        }
+
+        btnLogout.setOnClickListener {
+            Toast.makeText(this,"로그아웃이 되었습니다.",Toast.LENGTH_SHORT).show()
+            //로그아웃 처리 필요
+            val intent = Intent(this,MainActivity::class.java).apply{
+                putExtra("id","")
+                setResult(RESULT_OK,intent)
+            }
+            finish()
+        }
+
+        btnBack.setOnClickListener {
+            finish()
+        }
+    }
+
+
+    //내부저장된 값을 불려들어 유저의 정보를 출력
     private fun viewUserInfo(){
         sharedPreferences = getSharedPreferences("user_info", Context.MODE_PRIVATE)
         val name = findViewById<TextView>(R.id.tv_name)
         val email = findViewById<TextView>(R.id.tv_email)
         val getNameSharedPrefer = sharedPreferences.getString("userName","이름")
         val getEmailSharedPrefer = sharedPreferences.getString("userId","이메일")
-        name.setText(getNameSharedPrefer)
-        email.setText(getEmailSharedPrefer)
-    }
-    fun updateUI(){
-        setContentView(R.layout.activity_mypage)
-        cardViewIdMap = mutableMapOf()
-        setOnButtonCallBacks()
-        viewCartList()
-        viewOrderList()
-        onClickedCardView()
+        name.text = getNameSharedPrefer
+        email.text = getEmailSharedPrefer
     }
 
     // 저장된 list값을 읽어들어서 장바구니목록을 보여준다
     private fun viewCartList() {
         //객체에 따른 레이아웃에 CardView 값 추가
-        var layoutCart = findViewById<LinearLayout>(R.id.cart_layout)
+        layoutCart = findViewById(R.id.sv_layout_cart)
 
         //layout_card의 xml 속성값을 copy 하고싶다.
-        var layoutCard = findViewById<ConstraintLayout>(R.id.layout_card)
-        var cardViewParams = layoutCard.layoutParams
-        var imageViewParams = layoutCard.getViewById(R.id.iv_card).layoutParams
-        var textViewParams = layoutCard.getViewById(R.id.tv_card).layoutParams
+        layoutCard = findViewById(R.id.layout_card)
+        cardViewParams = layoutCard.layoutParams
+        imageViewParams = layoutCard.getViewById(R.id.iv_card).layoutParams
+        textViewParams = layoutCard.getViewById(R.id.tv_card).layoutParams
         basketList.forEach {
-            var cardView = CardView(this)
-            var constraintLayout = ConstraintLayout(this)
+            val cardView = CardView(this)
+            val constraintLayout = ConstraintLayout(this)
             val imageView = ImageView(this)
             val textView = TextView(this)
 
@@ -94,11 +133,13 @@ class MypageActivity : AppCompatActivity() {
 
             //Product 의 값 넣기
             imageView.setImageResource(it?.imageResId ?: 0)
-            textView.setText(it!!.nameResId)
+            //it(Product) 가 비어있지않고 그 해당되는 name이 비어있지않다면
+            it?.let { name -> textView.setText(name.nameResId) }
             textView.setBackgroundColor(Color.parseColor("#FFFFFF"))
 
-            //View ID 지정
+            //View ID 지정 : 해당 리스트의 index값 을 부여
 //            cardView.id = ViewCompat.generateViewId()
+            
             cardView.id = basketList.indexOf(it)
             cardViewIdMap.put(cardView.id, false)
             //View에 추가
@@ -114,17 +155,17 @@ class MypageActivity : AppCompatActivity() {
     // 저장된 list값을 읽어들어서 주문목록을 보여준다
     private fun viewOrderList() {
         //객체에 따른 레이아웃에 CardView 값 추가
-        var layoutCart = findViewById<LinearLayout>(R.id.order_layout)
+        layoutCart = findViewById(R.id.sv_layout_order)
 
         //layout_card의 xml 속성값을 copy 하고싶다.
-        var layoutCard = findViewById<ConstraintLayout>(R.id.layout_card_horizontal)
-        var cardViewParams = layoutCard.layoutParams
-        var imageViewParams = layoutCard.getViewById(R.id.iv_card).layoutParams
-        var textViewParams = layoutCard.getViewById(R.id.tv_card).layoutParams
+        layoutCard = findViewById(R.id.layout_card_horizontal)
+        cardViewParams = layoutCard.layoutParams
+        imageViewParams = layoutCard.getViewById(R.id.iv_card).layoutParams
+        textViewParams = layoutCard.getViewById(R.id.tv_card).layoutParams
 
         buyList.forEach {
-            var cardView = CardView(this)
-            var constraintLayout = ConstraintLayout(this)
+            val cardView = CardView(this)
+            val constraintLayout = ConstraintLayout(this)
             val imageView = ImageView(this)
             val textView = TextView(this)
 
@@ -135,7 +176,7 @@ class MypageActivity : AppCompatActivity() {
             textView.layoutParams = textViewParams
 
             imageView.setImageResource(it?.imageResId ?: 0)
-            textView.setText(it!!.nameResId)
+            it?.let { name -> textView.setText(name.nameResId) }
             textView.setBackgroundColor(Color.parseColor("#FFFFFF"))
 
             cardView.addView(constraintLayout)
@@ -167,41 +208,5 @@ class MypageActivity : AppCompatActivity() {
     }
 
 
-    //버튼 클릭시 콜백이벤트 처리
-    private fun setOnButtonCallBacks(){
 
-        btnBuy.setOnClickListener {
-            //지워질 list를 저장
-            var deleteList = mutableListOf<Product?>()
-            cardViewIdMap.filter { it.value }?.forEach { (idx, _) ->
-                deleteList.add(basketList[idx])
-            }
-            while(deleteList.isNotEmpty()){
-                buyList.add(deleteList.first())
-                basketList.remove(deleteList.first())
-
-                deleteList.removeFirst()
-            }
-            //UI 업데이트 함수
-            updateUI()
-        }
-
-        btnLogout.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java).apply {
-
-
-            }
-
-            setResult(RESULT_OK, intent)
-
-            if (!isFinishing) finish()
-            Toast.makeText(this, "로그아웃이 되었습니다.", Toast.LENGTH_SHORT).show()
-            //로그아웃 처리 필요
-            finish()
-        }
-
-        btnBack.setOnClickListener {
-            finish()
-        }
-    }
 }
