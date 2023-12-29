@@ -4,17 +4,27 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.util.Patterns
+import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import java.util.regex.Pattern
 
 class SignupActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var userPassword: EditText
+    private lateinit var confirmPassword: EditText
+    private lateinit var errorMessageTextView: TextView
+    private lateinit var signUpBtn: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
@@ -22,13 +32,31 @@ class SignupActivity : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("user_info", MODE_PRIVATE)
 
         val userEmail = findViewById<EditText>(R.id.editTextUserEmail)
-        val userPassword = findViewById<EditText>(R.id.editTextUserPassword)
+        userPassword = findViewById<EditText>(R.id.editTextUserPassword)
         val userName = findViewById<EditText>(R.id.editTextUsername)
         val userPhoneNum = findViewById<EditText>(R.id.editTextUserPhoneNum)
         val checkBoxAgree = findViewById<CheckBox>(R.id.checkBoxAgree)
-        val confirmPassword = findViewById<EditText>(R.id.editTextConfirmPassword)
+        confirmPassword = findViewById<EditText>(R.id.editTextConfirmPassword)
+        errorMessageTextView = findViewById<TextView>(R.id.errorMessageTextView)
+        signUpBtn = findViewById<Button>(R.id.signUpBtn)
 
-        val signUpBtn = findViewById<Button>(R.id.signUpBtn)
+
+        confirmPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {
+                // Do nothing
+            }
+
+            override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
+                // Do nothing
+            }
+
+            override fun afterTextChanged(editable: Editable?) {
+                checkPasswordMatch()
+            }
+        })
+
+
+
         signUpBtn.setOnClickListener {
 
 
@@ -61,11 +89,13 @@ class SignupActivity : AppCompatActivity() {
                 Toast.makeText(this, "약관에 동의해 주세요.", Toast.LENGTH_SHORT).show()
             }
 
-            else if(password != confirmPwd) {
-                Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
-            }
+
             // 조건을 충족할 경우 회원가입 진행
             else {
+                // 에러 메세지 텍스트뷰를 숨기기
+                val errorMessegeTextView = findViewById<TextView>(R.id.errorMessageTextView)
+                errorMessegeTextView.visibility = View.GONE
+
                 // SharedPreferences를 사용하여 사용자 데이터 저장
                 saveUserData(id, password, name, phoneNum)
 
@@ -85,6 +115,22 @@ class SignupActivity : AppCompatActivity() {
             finish()
         }
 
+    }
+
+    // 비빌번호 확인 메세지 로직
+    private fun checkPasswordMatch() {
+        val password = userPassword.text.toString()
+        val confirmPwd = confirmPassword.text.toString()
+
+        if (password == confirmPwd) {
+            errorMessageTextView.visibility = View.GONE
+            signUpBtn.isEnabled = true
+        } else {
+            errorMessageTextView.visibility = View.VISIBLE
+            errorMessageTextView.text = "비밀번호가 일치하지 않습니다."
+            errorMessageTextView.setTextColor(ContextCompat.getColor(this, android.R.color.holo_red_light))
+            signUpBtn.isEnabled = false
+        }
     }
     
     // 특수문자 포함 여부를 확인

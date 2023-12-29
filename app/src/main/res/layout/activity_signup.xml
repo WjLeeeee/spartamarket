@@ -149,6 +149,21 @@
         app:layout_constraintVertical_bias="1.0" />
 
 
+    <TextView
+        android:id="@+id/errorMessageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:textColor="#FF0000"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextConfirmPassword"/>
+
+
     <EditText
         android:id="@+id/editTextUsername"
         android:layout_width="300dp"
@@ -179,14 +194,14 @@
     <TextView
         android:id="@+id/textView12"
         android:layout_width="340dp"
-        android:layout_height="46dp"
+        android:layout_height="55dp"
         android:text="@string/signup_check_detail"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.225"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextUserPhoneNum"
-        app:layout_constraintVertical_bias="0.474" />
+        app:layout_constraintVertical_bias="0.482" />
 
     <CheckBox
         android:id="@+id/checkBoxAgree"
