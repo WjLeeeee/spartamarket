@@ -196,7 +196,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="@string/signup_phone_num"
-        android:inputType="text"
+        android:inputType="phone"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/phoneIcon"
         app:layout_constraintEnd_toEndOf="parent"

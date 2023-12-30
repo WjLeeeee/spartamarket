@@ -104,8 +104,8 @@ class SignupActivity : AppCompatActivity() {
 
                 Toast.makeText(this, "스파르타마켓에 정상적으로 회원가입 되었습니다.", Toast.LENGTH_SHORT).show()
 
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+//                val intent = Intent(this, MainActivity::class.java)
+//                startActivity(intent)
 
                 finish()
             }
