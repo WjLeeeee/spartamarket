@@ -2,11 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="gray">#E3E3E3</color>
+    <color name="gray">#E3CE1C</color>
     <color name="green">#36B54B</color>
+    <color name="red">#FF0000</color>
     <color name="buttonColor">#5866B3</color>
-    <color name="buttonColorGreen">#47a891</color>
-    <color name="buttonColorWhite">#e8e8e8</color>
-    <color name="buttonColorBlack">#000000</color>
-
 </resources>
