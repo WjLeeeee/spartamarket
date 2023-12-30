@@ -65,6 +65,10 @@ class MypageActivity : AppCompatActivity() {
     private fun setOnButtonCallBacks(){
 
         btnBuy.setOnClickListener {
+            if(buyList.isEmpty()) {
+                Toast.makeText(this,R.string.mypage_empty_basket,Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             //지워질 list를 저장
             val deleteList = mutableListOf<Product?>()
             cardViewIdMap.filter { it.value }.forEach { (idx, _) ->

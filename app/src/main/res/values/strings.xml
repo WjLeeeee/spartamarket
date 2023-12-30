@@ -58,5 +58,6 @@
     <string name="main_need_login">Login Please</string>
     <string name="mypage_order_complete">Order Finished</string>
     <string name="mypage_logout_finish">Logout Complete</string>
+    <string name="mypage_empty_basket">Your shopping cart is empty</string>
 
 </resources>
