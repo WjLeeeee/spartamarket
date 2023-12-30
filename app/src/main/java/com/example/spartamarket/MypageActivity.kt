@@ -65,7 +65,7 @@ class MypageActivity : AppCompatActivity() {
     private fun setOnButtonCallBacks(){
 
         btnBuy.setOnClickListener {
-            if(buyList.isEmpty()) {
+            if(basketList.isEmpty()) {
                 Toast.makeText(this,R.string.mypage_empty_basket,Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }

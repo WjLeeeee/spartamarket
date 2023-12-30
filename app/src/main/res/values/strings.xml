@@ -52,7 +52,7 @@
     <string name="mypage_name">Name</string>
     <string name="mypage_email">Email</string>
     <string name="mypage_basket">Basket</string>
-    <string name="mypage_purchase_product">Purchase Product</string>
+    <string name="mypage_purchase_product">Order</string>
     <string name="mypage_logout_btn">Sign Out</string>
     <string name="mypage_purchase_btn">Purchase</string>
     <string name="main_need_login">Login Please</string>
