@@ -4,10 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 
 class DetailActivity : AppCompatActivity() {
 
@@ -24,7 +24,7 @@ class DetailActivity : AppCompatActivity() {
         val productNameResId = intent.getIntExtra("productNameResId", 0)
         val productImgResId = intent.getIntExtra("productImageResId", 0)
         val productDescriptionResId = intent.getIntExtra("productDescriptionResId", 0)
-
+        val isLogin =intent.getBooleanExtra("isLogin",false)
         val productName = getString(productNameResId)
         val productDescription = getString(productDescriptionResId)
 
@@ -34,6 +34,11 @@ class DetailActivity : AppCompatActivity() {
         val selectedProduct = Product(productNameResId, productImgResId, productDescriptionResId)
         // 장바구니 버튼
         basketBtn.setOnClickListener {
+            //로그인이 안되어있으면
+            if(!isLogin){
+                Toast.makeText(this,R.string.main_need_login,Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val returnIntent = Intent()
             returnIntent.putExtra("BasketProduct",selectedProduct)
             setResult(Activity.RESULT_OK,returnIntent)
@@ -42,6 +47,11 @@ class DetailActivity : AppCompatActivity() {
 
         // 구매 버튼
         purchaseBtn.setOnClickListener {
+            //로그인이 안되어있으면
+            if(!isLogin){
+                Toast.makeText(this,R.string.main_need_login,Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val returnIntent = Intent()
             returnIntent.putExtra("BuyProduct",selectedProduct)
             setResult(Activity.RESULT_OK,returnIntent)

@@ -65,6 +65,10 @@ class MypageActivity : AppCompatActivity() {
     private fun setOnButtonCallBacks(){
 
         btnBuy.setOnClickListener {
+            if(buyList.isEmpty()) {
+                Toast.makeText(this,R.string.mypage_empty_basket,Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             //지워질 list를 저장
             val deleteList = mutableListOf<Product?>()
             cardViewIdMap.filter { it.value }.forEach { (idx, _) ->
@@ -85,9 +89,9 @@ class MypageActivity : AppCompatActivity() {
             Toast.makeText(this,R.string.mypage_logout_finish,Toast.LENGTH_SHORT).show()
             //로그아웃 처리 필요
             val intent = Intent(this,MainActivity::class.java).apply{
-                putExtra("id","")
-                setResult(RESULT_OK,intent)
+                putExtra("logout",true)
             }
+            setResult(RESULT_OK,intent)
             finish()
         }
 

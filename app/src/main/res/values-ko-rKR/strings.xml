@@ -58,5 +58,6 @@
     <string name="mypage_purchase_btn">구매</string>
     <string name="mypage_order_complete">주문완료</string>
     <string name="mypage_logout_finish">로그아웃이 완료되었습니다.</string>
+    <string name="mypage_empty_basket">장바구니가 비어있습니다.</string>
 
 </resources>

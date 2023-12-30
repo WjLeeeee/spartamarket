@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
@@ -20,7 +19,6 @@ class MainActivity : AppCompatActivity() {
 
     private val loginBtn: Button by lazy { findViewById(R.id.login_btn) }
     private val mypageBtn: Button by lazy { findViewById(R.id.mypage_btn) }
-    lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
 
     private lateinit var scrollView: ScrollView
     private lateinit var productListInnerLayout: LinearLayout
@@ -32,28 +30,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     //결과를 받는 Activitiy에서 선언
-    val resultLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                //받은 데이터 처리
-                val buyProduct = result.data?.getParcelableExtra<Product>("BuyProduct")
-                val basketProduct = result.data?.getParcelableExtra<Product>("BasketProduct")
-                if (buyProduct != null) list.buyList.add(buyProduct)
-                if (basketProduct != null) list.basketList.add(basketProduct)
-                val user_id = result.data?.getStringExtra("id") ?: ""
-                if(user_id !="") logIn = user_id
-                else logIn =""//로그아웃 상태
-            }
+    private lateinit var resultDetailLancher :ActivityResultLauncher<Intent>
+    private lateinit var resultLoginLancher :ActivityResultLauncher<Intent>
+    private lateinit var resultMypageLancher :ActivityResultLauncher<Intent>
 
-            if(logIn!="") loginBtn.isVisible = false
-            else loginBtn.isVisible = true
-        }
 
     //기본 카테고리는 mac으로 설정
     private var selectedCategory: String = "mac"
     private lateinit var productList: List<Product>
-    var logIn:String = ""
 
+
+    //로그인 정보
+    private var userId: String = ""
+    private var isLogin :Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -65,17 +54,20 @@ class MainActivity : AppCompatActivity() {
         //레이아웃에 데이터 띄우기
         updateProductScrollView(selectedCategory)
 
+        //RegisterForActivityResult() 의 값들을 정의
+        setRegisterForActivityResult()
+
         loginBtn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
 
-            resultLauncher.launch(intent)
+            resultLoginLancher.launch(intent)
         }
         mypageBtn.setOnClickListener {
-            if (logIn != "") {
+            if (isLogin) {
                 val intent = Intent(this, MypageActivity::class.java)
-                resultLauncher.launch(intent)
-            }else {
-                Toast.makeText(this,R.string.main_need_login,Toast.LENGTH_SHORT).show()
+                resultMypageLancher.launch(intent)
+            } else {
+                Toast.makeText(this, R.string.main_need_login, Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -101,7 +93,10 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("productImageResId", product.imageResId)
                 intent.putExtra("productNameResId", product.nameResId)
                 intent.putExtra("productDescriptionResId", product.descriptionResId)
-                resultLauncher.launch(intent)
+                //로그인 상태를 전달
+                intent.putExtra("isLogin",isLogin)
+
+                resultDetailLancher.launch(intent)
                 overridePendingTransition(R.anim.slide_up, 0) //아래서 위로 올라오는 애니메이션
             }
             productListInnerLayout.addView(productView)
@@ -124,4 +119,50 @@ class MainActivity : AppCompatActivity() {
         }
         updateProductScrollView(selectedCategory)
     }
+
+    /**
+     *  결과값을 받아서 처리하는 함수들을 정의
+     */
+    fun setRegisterForActivityResult() {
+        resultDetailLancher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    //받은 데이터 처리
+                    val buyProduct = result.data?.getParcelableExtra<Product>("BuyProduct")
+                    val basketProduct = result.data?.getParcelableExtra<Product>("BasketProduct")
+                    if (buyProduct != null) list.buyList.add(buyProduct)
+                    if (basketProduct != null) list.basketList.add(basketProduct)
+                }
+            }
+        resultLoginLancher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    val user_id = result.data?.getStringExtra("id") ?: ""
+
+                    //로그인 성공시!
+                    if (user_id != "") {
+                        isLogin = true
+                        userId = user_id
+
+                        //로그인 버튼 숨기기
+                        loginBtn.isVisible = false
+
+                    }
+                }
+
+            }
+        resultMypageLancher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    val isLogout = result.data?.getBooleanExtra("logout", false)
+                    if (isLogout == true) {
+                        loginBtn.isVisible = true
+                        userId = ""
+                        isLogin = false
+                    }
+                }
+            }
+    }
+
 }
+
