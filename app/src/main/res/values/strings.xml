@@ -59,5 +59,12 @@
     <string name="mypage_order_complete">Order Finished</string>
     <string name="mypage_logout_finish">Logout Complete</string>
     <string name="mypage_empty_basket">Your shopping cart is empty</string>
+    <string name="signup_signup_signup_success">I have been registered as a member of Sparta Market normally.</string>
+    <string name="signup_signup_fill_empty_area">Please fill in all the blanks.</string>
+    <string name="signup_signup_agree_checkbox">Please agree to the terms and conditions.</string>
+    <string name="signup_email_format">"Please enter it in email format.  "</string>
+    <string name="signup_password_fail">"The password does not match.  "</string>
+    <string name="signup_password_over_six">"Please enter a password of at least 6 characters.  "</string>
+    <string name="signup_password_special">"Please include special characters in your password.  "</string>
 
 </resources>

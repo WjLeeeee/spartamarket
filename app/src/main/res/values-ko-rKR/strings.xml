@@ -50,6 +50,13 @@
     <string name="signup_check">모두 확인하였으며 동의합니다.</string>
     <string name="signup_check_detail">전체 동의에는 필수 및 선택 정보에 대한 동의가 포함되어 있으며, 개별적으로 동의를 선택 하실 수 있습니다.</string>
     <string name="signup_signup_btn">회원가입</string>
+    <string name="signup_signup_signup_success">스파르타마켓에 정상적으로 회원가입 되었습니다.</string>
+    <string name="signup_signup_fill_empty_area">빈 칸을 모두 채워주세요.</string>
+    <string name="signup_signup_agree_checkbox">약관에 동의해 주세요.</string>
+    <string name="signup_email_format">이메일 형식으로 입력하여 주세요.</string>
+    <string name="signup_password_fail">비밀번호가 일치하지 않습니다.</string>
+    <string name="signup_password_over_six">비밀번호를 6자 이상으로 입력해주세요.</string>
+    <string name="signup_password_special">비밀번호에 특수문자를 포함해주세요.</string>
     <string name="mypage_name">이름</string>
     <string name="mypage_email">이메일</string>
     <string name="mypage_basket">장바구니</string>

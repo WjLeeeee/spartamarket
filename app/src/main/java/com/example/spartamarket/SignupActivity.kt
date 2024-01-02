@@ -85,12 +85,12 @@ class SignupActivity : AppCompatActivity() {
 
             // 빈칸이 있을 경우, 토스트 메세지 출력
             if(id.isEmpty() || password.isEmpty() || name.isEmpty() || phoneNum.isEmpty()) {
-                Toast.makeText(this, "빈 칸을 모두 채워주세요.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.signup_signup_fill_empty_area, Toast.LENGTH_SHORT).show()
             }
 
             // 약관동의에 체크하지 않을 경우, 토스트 메세지 출력
             else if(!checkBoxAgree.isChecked) {
-                Toast.makeText(this, "약관에 동의해 주세요.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.signup_signup_agree_checkbox, Toast.LENGTH_SHORT).show()
             }
 
             // 조건을 충족할 경우 회원가입 진행
@@ -102,11 +102,7 @@ class SignupActivity : AppCompatActivity() {
                 // SharedPreferences를 사용하여 사용자 데이터 저장
                 saveUserData(id, password, name, phoneNum)
 
-                Toast.makeText(this, "스파르타마켓에 정상적으로 회원가입 되었습니다.", Toast.LENGTH_SHORT).show()
-
-//                val intent = Intent(this, MainActivity::class.java)
-//                startActivity(intent)
-
+                Toast.makeText(this, R.string.signup_signup_signup_success, Toast.LENGTH_SHORT).show()
                 finish()
             }
 
@@ -127,7 +123,7 @@ class SignupActivity : AppCompatActivity() {
             errorMessageTextViewId.visibility = View.GONE
         } else {
             errorMessageTextViewId.visibility = View.VISIBLE
-            errorMessageTextViewId.text = "이메일 형식으로 입력하여 주세요."
+            errorMessageTextViewId.text = getString(R.string.signup_email_format)
         }
     }
 
@@ -146,13 +142,11 @@ class SignupActivity : AppCompatActivity() {
             errorMessageTextViewPwd.visibility = View.VISIBLE
 
             if(password != confirmPwd) {
-                errorMessageTextViewPwd.text = "비밀번호가 일치하지 않습니다."
+                errorMessageTextViewPwd.text = getString(R.string.signup_password_fail)
             } else if(password.length < 6) {
-                errorMessageTextViewPwd.text = "비밀번호를 6자 이상으로 입력해주세요."
-            } else if(confirmPwd.length < 6) {
-                errorMessageTextViewPwd.text = "비밀번호를 6자 이상으로 입력해주세요."
+                errorMessageTextViewPwd.text = getString(R.string.signup_password_over_six)
             } else if(!containsSpecialCharacter) {
-                errorMessageTextViewPwd.text = "비밀번호에 특수문자를 포함해주세요."
+                errorMessageTextViewPwd.text = getString(R.string.signup_password_special)
             }
 
 
